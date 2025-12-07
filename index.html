@@ -1,0 +1,3665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Empowering Science Education  | Inquiry-Based Learning with Generative Artificial Intelligence</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Toolkit · IBL & AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+
+  <!-- O teu CSS base (mantém / adapta) -->
+   <style>
+  /* ------------------------- */
+/* BASE LAYOUT & TYPOGRAPHY */
+/* ------------------------- */
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: #f6f6f8;
+  line-height: 1.7;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin-left: 280px;
+  padding: 40px;
+  max-width: 1200px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
+
+
+/* ------------------------- */
+/* SIDEBAR */
+/* ------------------------- */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  padding: 24px;
+  background: #F8FAFC;
+  border-right: 1px solid #dcdcdc;
+  overflow-y: auto;
+}
+
+.sidebar nav a {
+  display: block;
+  padding: 6px 4px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  border-left: 3px solid transparent;
+  transition: 0.2s;
+}
+
+.sidebar nav a:hover {
+  color: #1B263B;
+  border-left: 3px solid #D4A017;
+  background: #FFF4D6;
+}
+
+/* ------------------------- */
+/* SECTION BANNERS */
+/* ------------------------- */
+.teacher-banner {
+  background: #1B263B;
+  color: white;
+  padding: 18px 22px;
+  border-left: 6px solid #D4A017;
+  margin: 40px 0 20px;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.student-banner {
+  background: #415A77;
+  color: white;
+  padding: 18px 22px;
+  border-left: 6px solid #778DA9;
+  margin: 40px 0 20px;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* ------------------------- */
+/* TITLES */
+/* ------------------------- */
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1B263B;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1B263B;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #415A77;
+}
+
+/* ------------------------- */
+/* PROMPT COLLAPSIBLES */
+/* ------------------------- */
+.prompt-collapse {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  overflow: hidden;
+  transition: box-shadow .2s ease;
+}
+
+.prompt-collapse[open] {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.prompt-collapse > summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 600;
+  background: #F6F6F8;
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
+}
+
+/* Remove arrow */
+.prompt-collapse summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom arrow */
+.prompt-collapse summary::after {
+  content: "▸";
+  position: absolute;
+  right: 12px;
+  top: 14px;
+  transition: transform .2s ease;
+}
+
+.prompt-collapse[open] summary::after {
+  transform: rotate(90deg);
+}
+
+/* ------------------------- */
+/* PROMPT BOX */
+/* ------------------------- */
+.prompt-box {
+  background: #FFF4D6;
+  border-left: 4px solid #D4A017;
+  padding: 16px 18px;
+  font-family: ui-monospace, monospace;
+  white-space: pre-wrap;
+}
+
+.prompt-box textarea {
+  width: 100%;
+  height: 360px;
+  background: #FFF4D6;
+  border: none;
+  resize: vertical;
+  padding: 12px;
+}
+
+/* COPY BUTTON */
+.copy-btn {
+  background: #d4a017;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.copy-btn:hover {
+  background: #c08f11;
+}
+
+.arqus-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #D4A017;        /* dourado académico */
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+  border-bottom: 2px solid #D4A017;
+  padding-bottom: 6px;
+}
+.subtitle-gold {
+  color: #D4A017;        /* dourado académico */
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.keyword-tag {
+  background: #D4A017;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  margin-right: 8px;
+  letter-spacing: 0.02em;
+}
+
+.arqus-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;  /* espace inférieur minimal */
+  padding: 0;          /* IMPORTANT : enlève padding pour éviter 2 lignes */
+  position: relative;
+}
+
+/* ligne dorée unique */
+.arqus-title::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #BC9753;   /* doré Arqus officiel */
+  margin-top: 4px;       /* petite respiration */
+}
+.arqus-logo {
+  width: 160px;
+  height: auto;
+  margin-bottom: 4px; /* très compact */
+}
+.subtitle-gold {
+  color: #BC9753 !important;
+}
+.keyword-tag {
+  background: #BC9753;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+.light-text {
+    color: #555; /* gris lisible */
+    font-weight: 400;
+}
+
+     /* ---------- RUBRICS GENERAL LAYOUT ---------- */
+.rubric-section {
+  margin-top: 60px;
+}
+
+.rubric-section h2 {
+  color: #1b263b;
+  border-bottom: 3px solid #BC9753;
+  padding-bottom: 6px;
+  margin-bottom: 24px;
+}
+
+.rubric-section h3 {
+  margin-top: 28px;
+  color: #415a77;
+}
+
+/* ---------- COLLAPSIBLE ---------- */
+.rubric-collapse {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #faf9f6;
+  overflow: hidden;
+}
+
+.rubric-collapse summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 700;
+  color: #1b263b;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.rubric-collapse summary::-webkit-details-marker {
+  display: none;
+}
+
+.rubric-collapse[open] summary {
+  background: #fff4dd;
+}
+
+.rubric-collapse summary::after {
+  content: "▸";
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.rubric-collapse[open] summary::after {
+  transform: rotate(90deg);
+}
+
+/* ---------- RUBRIC CONTENT ---------- */
+.rubric-content {
+  padding: 18px 20px;
+}
+
+.rubric-criterion {
+  margin-bottom: 24px;
+}
+
+.rubric-criterion h4 {
+  margin-bottom: 4px;
+  color: #1b263b;
+  font-weight: 700;
+}
+
+.performance-level {
+  margin: 10px 0;
+  padding-left: 12px;
+}
+
+.performance-level p {
+  margin: 6px 0;
+}
+
+/* ---------- TABLE ---------- */
+.rubric-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+.rubric-table th {
+  background: #BC9753;
+  color: white;
+  padding: 8px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.rubric-table td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+/* ---------- NAVIGATION BOX ---------- */
+.rubric-nav {
+  background: #fffefa;
+  border: 1px solid #e2d4b7;
+  padding: 18px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.rubric-nav h3 {
+  color: #1b263b;
+  margin-bottom: 12px;
+}
+
+.rubric-nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.rubric-nav li {
+  margin-bottom: 8px;
+}
+
+.rubric-nav a {
+  color: #BC9753;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.rubric-nav a:hover {
+  text-decoration: underline;
+}
+
+     html {
+  scroll-behavior: smooth;
+}
+
+  </style>
+
+
+</head>
+<body>
+<div class="layout">
+<!-- SIDEBAR -->
+<aside class="sidebar" aria-label="Sidebar Navigation">
+
+    <img 
+        src="https://canal.ugr.es/UGR2031/wp-content/uploads/2023/04/logo-Arqus_White-Background-768x328.png"
+        alt="Arqus Alliance Logo"
+        class="arqus-logo"
+    >
+
+    <h4 class="arqus-title">ARQUS INNOVATION FUND</h4>
+
+    <nav>
+
+      <!-- FRONT MATTER -->
+     
+      <a href="#opening-page">Opening Page</a>
+      <a href="#copyright">Copyright & Licensing Information</a>
+      <a href="#Funding Acknowledgement">Funding Acknowledgement</a>
+      <a href="#preface">Preface</a>
+      <a href="#how-to-use">How to Use This Toolkit</a>
+
+      <!-- TEACHER TOOLKIT -->
+      <p class="section-title">TEACHER TOOLKIT</p>
+      <a href="#teacher-intro">Introduction</a>
+      <a href="#what-toolkit-contains">What This Toolkit Contains</a>
+      <a href="#quick-start">Quick Start Guide</a>
+      <a href="#teacher-role">Teacher Role Across Three Stages</a>
+      <a href="#why-works">Why This Toolkit Works</a>
+      <a href="#what-different">What Makes This Toolkit Different</a>
+      <a href="#roles">Teacher · Student · AI Roles</a>
+
+      <!-- STUDENT TOOLKIT -->
+      <p class="section-title">STUDENT TOOLKIT</p>
+      <a href="#student-intro">Introduction</a>
+      <a href="#purpose-toolkit">Purpose of This Toolkit</a>
+      <a href="#student-how-to-use">How to Use This Toolkit</a>
+      <a href="#student-ai">How AI Fits In</a>
+      <a href="#student-learn">What You Will Learn</a>
+      <a href="#student-workflow">Student Workflow</a>
+
+      <!-- STAGE 0 -->
+      <p class="section-title">STAGE 0 — TEAM SETUP</p>
+      <a href="#stage0-purpose">Purpose</a>
+      <a href="#stage0-activities">Activities</a>
+      <a href="#stage0-team">Form the Team</a>
+      <a href="#stage0-tasks">Group-Wide Tasks</a>
+      <a href="#stage0-prompt">Prompt — Task Distribution</a>
+
+      <!-- STAGE 1 -->
+      <p class="section-title">STAGE 1 — ASK & RESEARCH</p>
+      <a href="#stage1-purpose">Purpose of Stage 1</a>
+      <a href="#step0">STEP 0 — Candidate Questions</a>
+      <a href="#step1">STEP 1 — Epistemological Analysis</a>
+      <a href="#step2">STEP 2 — Search Strings</a>
+      <a href="#step3">STEP 3 — Search Databases</a>
+      <a href="#step4">STEP 4 — Extract Evidence</a>
+      <a href="#step5">STEP 5 — Select Sources</a>
+      <a href="#step6">STEP 6 — Topics & Subtopics</a>
+      <a href="#step7">STEP 7 — Mind Map</a>
+      <a href="#step8a">STEP 8A — Glossary Terms</a>
+      <a href="#step8b">STEP 8B — Glossary App</a>
+
+      <!-- STAGE 2 -->
+      <p class="section-title">STAGE 2 — EXPLAIN & CREATE</p>
+      <a href="#stage2-purpose">Purpose of Stage 2</a>
+      <a href="#stage2-activities">Activities</a>
+      <a href="#step9">STEP 9 — Scientific Explanation</a>
+      <a href="#step10">STEP 10 — Multimodal Outputs</a>
+      <a href="#step10a">STEP 10A — Visual Output</a>
+      <a href="#step10b">STEP 10B — Podcast</a>
+      <a href="#step10c">STEP 10C — Videocast</a>
+      <a href="#step10d">STEP 10D — Interactive Science Game</a>
+      <a href="#step10e">STEP 10E — Oral Presentation</a>
+
+      <!-- STAGE 3 -->
+      <p class="section-title">STAGE 3 — REFLECT & IMPROVE</p>
+      <a href="#stage3-purpose">Purpose of Stage 3</a>
+      <a href="#stage3-activities">Activities</a>
+      <a href="#step12">STEP 12 — Evaluate Multimodal Outputs</a>
+      <a href="#step13">STEP 13 — Extend the Inquiry</a>
+   <!-- ASSESSMENT -->
+<p class="section-title">ASSESSMENT</p>
+<a href="#rubric1">Rubric 1 — Scientific Explanation</a>
+<a href="#rubric2">Rubric 2 — Evidence Base & Research Process</a>
+<a href="#rubric3">Rubric 3 — Multimodal Output</a>
+<a href="#rubric4">Rubric 4 — Podcast / Videocast</a>
+<a href="#rubric5">Rubric 5 — Interactive Science Game</a>
+<a href="#rubric6">Rubric 6 — Oral Presentation</a>
+<a href="#rubric7">Rubric 7 — Group Collaboration</a>
+<a href="#rubric8">Rubric 8 — Ethical AI Use</a>
+
+   
+   </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- ================= FRONT MATTER ================= -->
+
+    <section id="opening-page">
+      <h1 class="subtitle-gold">Empowering Science Education</h1>
+<h2 class="subtitle-gold">Inquiry-Based Learning with Generative Artificial Intelligence</h2>
+    
+      <h3>A Practical Guide for Teachers and Students</h3>
+
+      
+        <p class="keywords">
+  <span class="keyword-tag">Inquiry-Based Learning</span>
+  <span class="keyword-tag">Multimodal Scientific Communication</span>
+  <span class="keyword-tag">Ethical AI Integration</span>
+</p>
+      </p>
+    </section>
+
+    <section id="Copyright">
+    <h4>COPYRIGHT & LICENSING INFORMATION</h4>
+
+    <p>© 2025 University of Minho & University of Wroclaw</p>
+
+    <p><strong>Authors:</strong> Magda Dubińska-Magiera & Sílvia Araújo</p>
+
+    <p>
+        This work is released under the 
+        <strong>Creative Commons Attribution–NonCommercial–NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)</strong>.
+        You may share this publication for non-commercial educational or academic purposes,
+        provided that appropriate credit is given and no modifications are made.
+    </p>
+
+    <!-- Creative Commons icons -->
+    <p>
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" 
+           target="_blank" 
+           style="text-decoration:none; color:#333;">
+            <img src="https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png" 
+                 alt="CC BY-NC-ND 4.0 License">
+        </a>
+    </p>
+
+    <p>
+        No part of this publication may be reproduced, distributed, or adapted 
+        for commercial purposes without prior written permission.
+    </p>
+
+    <p><strong>For permission requests, contact:</strong><br>
+        University of Minho — 
+        <a href="mailto:saraujo@elach.uminho.pt" style="text-decoration:none; color:#333;">
+            saraujo@elach.uminho.pt
+        </a><br>
+        University of Wroclaw — 
+        <a href="mailto:magda.dubinska-magiera@uwr.edu.pl" style="text-decoration:none; color:#333;">
+            magda.dubinska-magiera@uwr.edu.pl
+        </a>
+    </p>
+
+    <p>
+        To view the full license, visit:<br>
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" 
+           target="_blank"
+           style="text-decoration:none; color:#333;">
+            https://creativecommons.org/licenses/by-nc-nd/4.0/
+        </a>
+    </p>
+</section>
+<section id="Funding Acknowledgement">
+    <h4>FUNDING ACKNOWLEDGEMENT</h4>
+
+    <p>
+    This publication has been developed with the generous support of the 
+    <strong>Arqus Innovation Fund</strong>, within the framework of the project 
+    <span style="font-style: italic; color:#1b263b;">
+        “Fostering Scientific and AI Literacy through Inquiry-Based Learning in Animal Developmental Biology.”
+    </span>
+</p>
+
+    <p>
+        The authors gratefully acknowledge the <strong>Arqus Alliance</strong> for its 
+        commitment to promoting innovation, scientific literacy, and responsible AI integration 
+        across European higher education institutions.
+    </p>
+
+    <p>
+        The support provided by the Arqus Innovation Fund has enabled the development 
+        of this dual toolkit, designed to strengthen inquiry-based scientific learning 
+        and multimodal communication practices among teachers and students.
+    </p>
+
+    <p>
+        For more information about the Arqus Alliance and its initiatives, visit:<br>
+        <a href="https://www.arqus-alliance.eu" target="_blank" style="color:#333; text-decoration:none;">
+            https://www.arqus-alliance.eu
+        </a>
+    </p>
+</section>
+
+
+
+
+    <section id="preface">
+  <h4>PREFACE</h4>
+
+  <p>
+    Scientific literacy and AI literacy are becoming inseparable pillars of contemporary education.
+    Students today must learn not only how to ask scientific questions, evaluate evidence, and communicate findings,
+    but also how to interact responsibly with AI systems that increasingly shape scientific and academic work.
+  </p>
+
+  <p>
+    This ebook was created to support that transformation. The project began as a collaborative initiative between the
+    University of Minho and the University of Wroclaw to design a transparent, ethical, and student-autonomous model of
+    Inquiry-Based Learning (IBL) enriched by multimodal scientific communication and grounded in responsible use of
+    generative AI.
+  </p>
+
+  <p>We asked ourselves:</p>
+  <ul>
+    <li>How can teachers support authentic scientific inquiry without increasing workload?</li>
+    <li>How can students gain autonomy while maintaining academic integrity?</li>
+    <li>How can AI strengthen — not replace — scientific reasoning?</li>
+    <li>What does “good use of AI” look like in a rigorous academic context?</li>
+  </ul>
+
+  <p>The result is a dual toolkit:</p>
+
+  <h3>Teacher Toolkit</h3>
+  <p>Designed to reduce workload while strengthening pedagogical structure. It provides:</p>
+  <ul>
+    <li>a minimal-intervention workflow</li>
+    <li>an assessment system with 8 rubrics</li>
+    <li>guidelines for ethical AI use</li>
+    <li>a multimodality guide for scientific communication</li>
+    <li>templates for feedback and reflection</li>
+  </ul>
+
+  <h3>Student Toolkit</h3>
+  <p>Designed to promote autonomy, scientific thinking, and responsible AI literacy. It guides students through:</p>
+  <ul>
+    <li>asking rigorous research questions</li>
+    <li>searching and evaluating scientific evidence</li>
+    <li>producing multimodal outputs</li>
+    <li>communicating to expert and general audiences</li>
+    <li>reflecting, improving, and extending their inquiry</li>
+  </ul>
+
+  <p>
+    Both toolkits follow the same philosophy:<br>
+    <strong>AI supports clarity and structure. Students remain the thinkers. Teachers guard integrity.</strong>
+  </p>
+
+  <p>
+    We hope this ebook will empower educators and learners to embrace an academically responsible,
+    scientifically rigorous, and creatively multimodal approach to inquiry in the age of AI.
+  </p>
+</section>
+
+
+   <section id="how-to-use">
+  <h2>🧭 How to Use This Toolkit</h2>
+
+
+
+  <p>
+    This ebook is designed as a <strong>dual toolkit</strong>: one part for teachers, one part for students.  
+    The two workflows move in parallel, stay perfectly aligned, and support each other—without ever merging or
+    replacing one another.
+  </p>
+
+  <!-- TEACHERS -->
+  <h3>How Teachers Should Use It</h3>
+  <ul>
+    <li>Follow the <strong>Teacher Workflow</strong> to plan each stage of the inquiry project.</li>
+    <li>Use ready-made <strong>prompts, rubrics, planning templates,</strong> and <strong>ethical AI guidelines</strong>.</li>
+    <li>Consult the toolkit before each stage to understand your role, your decisions, and the checkpoints you must validate.</li>
+    <li>Keep the Student Toolkit visible to understand what students are doing, but <strong>do not</strong> complete student tasks yourself.</li>
+  </ul>
+
+  <!-- STUDENTS -->
+  <h3>How Students Should Use It</h3>
+  <ul>
+    <li>Follow the <strong>step-by-step Student Workflow</strong> from Stage 0 to Stage 3.</li>
+    <li>
+      Use the prompts, checklists, and instructions at each step to organise your thinking,
+      guide your research, and create multimodal outputs.
+    </li>
+    <li>Refer to the <strong>ethical AI guidelines</strong> to use generative AI responsibly and transparently.</li>
+    <li>Work collaboratively and validate decisions as a group, especially in Stages 1 and 3.</li>
+  </ul>
+
+  <!-- TOGETHER -->
+  <h3>How Both Parts Work Together</h3>
+  <p>Although each toolkit can be used independently, the model achieves its full potential when both sides are activated:</p>
+
+  <ul>
+    <li><strong>Teachers</strong> design, validate, and ensure integrity.</li>
+    <li><strong>Students</strong> investigate, analyse, create, and reflect.</li>
+    <li><strong>AI</strong> provides structure, clarity, and scaffolding—but reasoning remains fully human.</li>
+  </ul>
+
+  <p>
+    When used together, the system creates a cohesive and rigorous inquiry environment that strengthens research literacy,
+    multimodal communication, and ethical AI practices.
+  </p>
+</section>
+
+
+    <hr>
+
+    <!-- ================= TEACHER TOOLKIT ================= -->
+
+    <section id="teacher-intro">
+      <h1>Teacher Toolkit</h1>
+      <p>The Teacher Toolkit provides a complete, ready-to-use framework for implementing Inquiry-Based Learning
+        (IBL) enriched with multimodal scientific communication and ethical AI use.</p>
+    </section>
+
+    <section id="what-toolkit-contains">
+      <h2>What This Toolkit Contains</h2>
+      <ul>
+        <li>Full Teacher Workflow (Minimal-Intervention Model)</li>
+        <li>Complete Assessment System with 8 rubrics</li>
+        <li>Responsible AI Use Guidelines</li>
+        <li>Multimodality Framework + Master Prompts</li>
+        <li>Feedback, Peer Review &amp; Reflection Tools</li>
+        <li>Annexes for immediate adoption</li>
+      </ul>
+    </section>
+
+   <section id="quick-start">
+  <h2>Quick Start Guide</h2>
+
+  <p>
+    Teachers can adopt this model <strong>in full, partially, or as a mini-module</strong>, 
+    depending on the learning objectives, available time, and course structure.
+  </p>
+
+  <p>
+    <strong>Full implementation (3–6 weeks):</strong><br>
+    Students follow the entire inquiry cycle—from forming teams to producing multimodal scientific outputs 
+    and reflecting on their learning. This format is best suited for project-based or inquiry-based courses.
+  </p>
+
+  <p>
+    <strong>Partial implementation (1–2 weeks):</strong><br>
+    Teachers focus on a single stage—such as building research questions (Stage 1) 
+    or creating multimodal communication outputs (Stage 2). 
+    Ideal for strengthening specific academic, scientific, or communication skills.
+  </p>
+
+  <p>
+    <strong>Mini-module (1–2 sessions):</strong><br>
+    A standalone component is used, such as the Scientific Explanation task, the Poster Prompt,
+    or the Ethical AI Guidelines. Perfect for workshops, short teaching units, and targeted skill development.
+  </p>
+
+  <p>
+    This flexibility allows the toolkit to adapt to diverse teaching contexts across disciplines—
+    STEM, Social Sciences, Arts & Humanities—and works effectively in both face-to-face and hybrid learning environments.
+  </p>
+</section>
+
+
+    <section id="teacher-role">
+      <h2>Teacher Role Across the Three Stages</h2>
+      <p><strong>Stage 1 — Ask &amp; Research:</strong> ensure clarity of the research question, supervise sources,
+        monitor AI behaviour.</p>
+      <p><strong>Stage 2 — Explain &amp; Present:</strong> support scientific accuracy and guide multimodal
+        communication.</p>
+      <p><strong>Stage 3 — Reflect &amp; Improve:</strong> facilitate metacognition and ensure fairness in evaluation.</p>
+    </section>
+
+    <section id="why-works">
+      <h2>Why This Toolkit Works</h2>
+      <p>It integrates Inquiry-Based Learning, Cognitive Load Theory, Multimodal Learning, Academic Integrity, and
+        Digital Competence frameworks.</p>
+    </section>
+
+    <section id="what-different">
+      <h2>What Makes This Toolkit Different</h2>
+      <p>It embeds multimodal scientific communication, explicit ethical AI guidelines, and controlled prompting
+        architecture.</p>
+    </section>
+
+    <section id="roles">
+      <h2>Teacher · Student · AI Roles</h2>
+      <p><strong>Teacher:</strong> facilitator, evaluator, guardian of integrity.</p>
+      <p><strong>Students:</strong> researchers, analysts, communicators, reflective learners.</p>
+      <p><strong>AI:</strong> cognitive scaffold, structure helper, clarity enhancer (never a replacement for reasoning).</p>
+    </section>
+
+    <hr>
+
+    <!-- ================= STUDENT TOOLKIT ================= -->
+
+    <section id="student-intro">
+  <h1>Student Toolkit</h1>
+
+  <p>
+    This Student Toolkit will guide you step-by-step through a complete scientific inquiry project supported 
+    by multimodal communication and the ethical use of Artificial Intelligence.
+  </p>
+
+  <p>
+    You will learn to think, investigate, analyse, create, present, and reflect like a researcher.
+  </p>
+
+  <p>
+    Inquiry-Based Learning places you at the centre.<br>
+    Your teacher becomes a facilitator.<br>
+    AI becomes a structured support tool — <em>not a shortcut</em>.
+  </p>
+</section>
+
+
+    <section id="purpose-toolkit">
+  <h2>Purpose of This Toolkit</h2>
+
+  <p>This toolkit is designed to support you throughout the entire Inquiry-Based Learning (IBL) process. It helps you:</p>
+
+  <ul>
+    <li>understand the full IBL workflow</li>
+    <li>plan your teamwork and distribute roles effectively</li>
+    <li>build strong, meaningful research questions</li>
+    <li>conduct high-quality academic searches</li>
+    <li>extract, organise, and synthesise information from reliable sources</li>
+    <li>create multimodal outputs such as posters, infographics, podcasts, games, and presentations</li>
+    <li>use AI tools responsibly, ethically, and transparently</li>
+    <li>evaluate your work, reflect on your process, and plan improvements</li>
+  </ul>
+
+  <p>
+    You will work <strong>independently</strong>, <strong>collaboratively</strong>, and <strong>creatively</strong> —
+    all while developing authentic scientific and research literacy.
+  </p>
+</section>
+
+
+    <section id="student-how-to-use">
+  <h2>🧭 How to Use This Toolkit</h2>
+
+  <p>
+    This toolkit is designed as a <strong>step-by-step guide</strong> that will accompany you through the full 
+    Inquiry-Based Learning (IBL) process — from forming your team to presenting your final multimodal outputs.
+  </p>
+
+  <p>
+    Follow the toolkit in order, from Stage 0 to Stage 3. Each stage is divided into clear tasks 
+    that tell you:
+  </p>
+
+  <ul>
+    <li>what you need to do</strong></li>
+    <li>why it matters</strong></li>
+    <li>how AI can assist you (optional)</strong></li>
+    <li>which prompts you can use</strong></li>
+    <li>what outputs you are expected to produce</strong></li>
+    <li>whether the work is individual or collaborative</strong></li>
+  </ul>
+
+ 
+
+  <p>
+    The more actively you engage with each step — analysing, questioning, refining, and making decisions — 
+    the stronger your scientific reasoning and communication skills will become.
+  </p>
+
+  <p>
+    Use AI as a support tool</strong> for structure, clarity, and organisation, but remember: 
+    <strong>you are responsible for all reasoning, interpretations, and final decisions.
+  </p>
+
+</section>
+
+
+    <section id="student-ai" class="light-text">
+      <h3>How AI Fits In</h3>
+      <p>You will use AI tools to structure ideas, generate outlines, transform formats, clarify concepts, support
+        multimodal creation, and receive formative feedback — but AI cannot do the thinking for you.</p>
+    </section>
+
+    <section id="student-learn">
+    <section id="student-learn" class="light-text">
+      <h3>What You Will Learn</h3>
+      <ul>
+        <li>Ask meaningful academic questions</li>
+        <li>Conduct scholarly research</li>
+        <li>Build and interpret evidence</li>
+        <li>Create multimodal scientific communication</li>
+        <li>Evaluate feedback and improve your work</li>
+        <li>Work ethically and transparently with AI</li>
+      </ul>
+    </section>
+
+    <section id="student-workflow">
+      <h2>Student Workflow</h2>
+      <ol>
+        <li>Ask &amp; Research</strong> — formulate, analyse, search, extract, organise evidence</li>
+        <li><strong>Explain &amp; Present</strong> — build explanations and multimodal outputs</li>
+        <li><strong>Reflect &amp; Improve</strong> — evaluate work, reflect on reasoning, extend inquiry</li>
+      </ol>
+    </section>
+
+    <hr>
+
+    <!-- ================= STAGE 0 ================= -->
+
+    <section id="stage0-purpose">
+      <h1 class="subtitle-gold">Stage 0 — Team Setup &amp; Task Planning</h1>
+      <h3>Purpose</h3>
+      <p>Before beginning your inquiry, your group establishes a clear organisational structure, distributes
+        responsibilities, sets timelines, and defines how AI tools will be used responsibly.</p>
+    </section>
+
+    <section id="stage0-activities">
+      <h3>Activities</h3>
+    </section>
+
+    <section id="stage0-team">
+      <h3>1. Form the Team</h3>
+      <ul>
+        <li>3–4 members per group</li>
+        <li>Diversity of strengths (research, writing, design, coding, communication…)</li>
+      </ul>
+    </section>
+
+    <section id="stage0-tasks">
+      <h3>2. Group-Wide Tasks &amp; AI-Assisted Role Distribution</h3>
+      <p>List of tasks that must be validated collaboratively (RQ, search terms, conceptual structure, scientific
+        explanation, multimodal outputs, reflection…)</p>
+    </section>
+
+    <section id="stage0-prompt">
+     
+     <!-- PROMPT — Automatic Task Distribution (Stage 0) -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Automatic Task Distribution (Stage 0)</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+We are a group of [NUMBER] students doing an inquiry-based scientific project.
+
+Please assign ALL tasks in the project equitably, with:
+– who drafts each task  
+– which tasks require full-group validation  
+– workload balance  
+– suggested deadlines (optional)  
+– individual + collective responsibilities clearly separated  
+
+Use the project workflow below.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 0 — TEAM SETUP & TASK PLANNING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+(Team formation • Role distribution • Collaboration planning)
+
+Group-wide tasks requiring validation:
+– Research Question selection  
+– Boolean strings & search terms  
+– Source selection  
+– Conceptual structure  
+– Scientific Explanation  
+– Multimodal outputs  
+– Oral presentation  
+– Evaluation & reflection  
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 1 — ASK & RESEARCH
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+0. Generate Candidate Research Questions  
+1. Epistemological Analysis  
+2. Build Search Strings  
+3. Search Databases  
+4. Extract Evidence  
+5. Select Relevant Sources  
+6. Define Topics & Subtopics  
+7. Create Mind Map  
+8A. Extract Specialised Terms  
+8B. Build Glossary App (optional)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 2 — EXPLAIN & CREATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9. Scientific Explanation  
+10. Multimodal Outputs  
+   – 10A Poster / Infographic / Graphic Abstract  
+   – 10B Podcast  
+   – 10C Videocast  
+   – 10D Interactive Science Game  
+11. Oral Presentation  
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STAGE 3 — REFLECT & IMPROVE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+12. Evaluate Multimodal Outputs  
+13. Extend the Inquiry (New Questions)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FINAL OUTPUT REQUIRED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. A table with:
+   – Task  
+   – Subtasks  
+   – Drafted by (who)  
+   – Requires group validation?  
+   – Suggested deadline  
+
+2. A 5–7 line justification explaining:
+   – fairness  
+   – workload balance  
+   – variety of task types  
+   – shared vs individual responsibilities  
+   – why the distribution is equitable
+    </textarea>
+  </div>
+</details>
+
+
+    </section>
+
+    <hr>
+
+    <!-- ================= STAGE 1 ================= -->
+
+    <section id="stage1-purpose">
+      <h1 class="subtitle-gold">Stage 1 — Ask &amp; Research</h1>
+      <h3>🎯 Purpose of Stage 1</h3>
+      <p>By the end of Stage 1 you will have: a clear research question, epistemological analysis, Boolean strings,
+        curated corpus, metadata &amp; extraction tables, conceptual structure, mind map, and glossary.</p>
+    </section>
+
+    <!-- STEP 0 -->
+    <section id="step0">
+      <h3>STEP 0 — Generate Candidate Research Questions</h2>
+      <p>Each student proposes 2–4 candidate research questions; the group compares, refines, and selects one final
+        question.</p>
+
+      
+     
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Candidate Research Questions Generator</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+Based on the following general topic:
+[INSERT TOPIC]
+
+Generate 4–6 possible research questions that:
+– are focused and investigable
+– involve concepts, mechanisms, variables, or relationships
+– require evidence-based analysis
+– can be addressed using academic literature
+– are suitable for an inquiry-based project
+
+For each question, provide:
+1) The question (1 sentence)
+2) Why it is interesting or relevant
+3) Whether it is feasible (Yes/No)
+
+Output:
+✔ 4–6 candidate research questions  
+✔ short justification for each  
+✔ feasibility check  
+✔ group chooses ONE final question
+    </textarea>
+  </div>
+</details>
+
+    </section>
+
+    <!-- STEP 1 -->
+    <section id="step1">
+      <h3>STEP 1 — Epistemological Analysis of the Research Question</h2>
+      <p>Rewrite the chosen research question in simple terms and identify phenomenon, variables, relationships,
+        populations, scope, assumptions, directions of investigation, and required evidence.</p>
+
+    
+   
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Full Epistemological Analysis</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+Rewrite the following research question in simple terms and perform a complete epistemological and hermeneutic analysis.
+
+Research question:
+[INSERT]
+
+Please identify and explain:
+
+1. Core phenomenon  
+   – What is the central process, behaviour, or concept being investigated?
+
+2. Variables or components  
+   – What elements might interact, influence, or relate to each other?
+
+3. Type of relationship expected  
+   – Cause–effect? Comparison? Correlation? Description? Mechanism?
+
+4. Populations, texts, systems, or contexts involved  
+   – Which groups, datasets, texts, biological systems, linguistic systems, etc.?
+
+5. Scope and boundaries  
+   – What is inside the question’s domain?  
+   – What is clearly outside?
+
+6. Implicit assumptions  
+   – What background beliefs or ideas does the question assume?
+
+7. Possible directions of investigation  
+   – Which angles, perspectives, or sub-questions could emerge from this RQ?
+
+8. Required kinds of evidence  
+   – What kind of data or academic sources would be needed to answer it?
+
+Please present the result in a clear, structured format (numbered list).
+    </textarea>
+  </div>
+</details>
+
+    </section>
+
+    <!-- STEP 2 -->
+    <section id="step2">
+      <h3>STEP 2 — Build Search Strings</h2>
+      <p>Translate your research question into search terms and Boolean strings for different academic databases.</p>
+
+      
+     <!-- PROMPT — Search Terms + Boolean String -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Search Terms + Boolean String</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+Here is my research question:
+[INSERT]
+
+---------------------------------------------------------
+TASK 1 — Extract Search Terms
+---------------------------------------------------------
+Create a table with the following columns:
+1) Core terms  
+2) Synonyms  
+3) Related concepts  
+4) Broader / narrower terms  
+5) Discipline-specific vocabulary  
+
+---------------------------------------------------------
+TASK 2 — Generate Boolean Search Strings
+---------------------------------------------------------
+Using ONLY the terms from the table, produce 5–8 Boolean strings:
+
+• at least one simple string  
+• one advanced string  
+• one interdisciplinary string  
+• include optional filters  
+  (e.g., “last 5 years”, “peer-reviewed”, “systematic review”)  
+
+---------------------------------------------------------
+OUTPUT
+---------------------------------------------------------
+✔ Completed table of search terms  
+✔ List of Boolean search strings  
+✔ Notes on which databases each string is best suited for  
+    </textarea>
+  </div>
+</details>
+
+</details>
+
+    </section>
+
+    <!-- STEP 3 -->
+    <section id="step3">
+      <h3>STEP 3 — Search Databases</h2>
+      <p>Use your Boolean strings to search databases (Google Scholar, Semantic Scholar, Scispace, JSTOR, PubMed,
+        Web of Science, etc.) and compile a raw list of sources in a metadata table.</p>
+    </section>
+
+    <!-- STEP 4 -->
+    <section id="step4">
+      <h3>STEP 4 — Extract Evidence</h2>
+      <p>For each source, extract main idea, key evidence, variables/mechanisms/concepts, and relevance to your
+        research question.</p>
+
+      <!-- PROMPT — Source Extraction -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Source Extraction</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+Extract the essential information from the following academic source.
+Use ONLY the information provided in the abstract (unless otherwise specified).
+
+Identify and explain the following:
+
+1. Main Idea / Argument
+   – What is the central claim or finding of the source?
+   – What is the author’s purpose or contribution?
+
+2. Key Evidence / Examples
+   – What evidence supports the main idea?
+   – What data, arguments, cases, or examples are used?
+
+3. Variables, Mechanisms, and Concepts  
+   (Explain each clearly)
+   • Variables = elements that change or vary in the study 
+       (e.g., motivation, language proficiency, pollution levels, memory performance)  
+   • Mechanisms = processes or pathways that explain HOW or WHY something happens 
+       (e.g., cognitive load, hormonal regulation, feedback loops, scaffolding processes)  
+   • Concepts = key theoretical ideas or terms needed to understand the study 
+       (e.g., bilingualism, sustainability, neuroplasticity, discourse cohesion)
+
+   → Identify which of these appear in the source AND briefly define them.
+
+4. Relevance to My Research Question
+   – How does this source help answer the research question?
+   – Does it provide evidence, a model, a theoretical concept, a method?
+   – Be explicit about the link.
+
+Present the extracted information in the structured table below.
+
+Source (insert in this format):  
+| Title | Authors | Year | Abstract | DOI |
+
+Now present the extracted information in the table BELOW (do not change the structure):
+
+Extraction Table  
+| Title | Key Idea / Argument | Key Evidence | Variables / Mechanisms / Concepts | Relevance to the RQ |
+|-------|----------------------|--------------|------------------------------------|----------------------|
+| …     | What the source claims or concludes | Evidence supporting the claim | Identify & briefly define variables, mechanisms, and concepts | Explain the connection to the RQ |
+    </textarea>
+  </div>
+</details>
+
+    </section>
+
+    <!-- STEP 5 -->
+<section id="step5">
+  <h3>STEP 5 — Select Relevant Sources</h2>
+  <p>Classify each source as directly relevant, partially relevant, or not relevant, and justify the decision.</p>
+
+  <!-- PROMPT — Source Evaluation & Selection (RQ-Aligned) -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Source Evaluation & Selection (RQ-Aligned)</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+Using the Research Question and the extraction tables you created in Step 5, evaluate all sources according to their relevance and usefulness for answering the inquiry.
+
+Research Question:
+[INSERT RQ]
+
+Source Extraction Tables:
+[INSERT summaries]
+
+---------------------------------------------------------
+TASK 1 — Classify Relevance of Each Source
+---------------------------------------------------------
+For each source, classify it as:
+
+• Directly Relevant → clearly addresses the phenomenon, variables, mechanisms, or population of the RQ  
+• Partially Relevant → provides general background or touches only some aspects of the RQ  
+• Not Relevant → does not help answer the RQ or is outside scope  
+
+---------------------------------------------------------
+TASK 2 — Justify Your Classification
+---------------------------------------------------------
+Provide a 2–3 sentence justification for each source explaining:
+
+• what the source contributes  
+• which part of the RQ it relates to (if relevant)  
+• why it is direct, partial, or not relevant  
+
+---------------------------------------------------------
+TASK 3 — Decide Whether to Keep the Source
+---------------------------------------------------------
+For each source, decide:
+
+• Keep: Yes → provides essential evidence or conceptual background  
+• Keep: No → adds little value or is outside scope  
+
+---------------------------------------------------------
+TASK 4 — Produce the Corpus Selection Table  
+(required format, do NOT modify structure)
+---------------------------------------------------------
+
+Corpus Selection Table  
+| Title | Relevance | Justification | Keep? |
+|-------|-----------|---------------|--------|
+| …     | Direct / Partial / None | Clear explanation based on the extraction | Yes / No |
+    </textarea>
+  </div>
+</details>
+
+</section>
+
+
+<!-- STEP 6 -->
+<section id="step6">
+  <h3>STEP 6 — Topics &amp; Subtopics</h2>
+  <p>Identify main topic, 3–8 subtopics, and justify the conceptual structure.</p>
+
+  <!-- PROMPT — Define Topic & Subtopics (RQ-Aligned) -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Define Topic & Subtopics (RQ-Aligned)</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+I want to consolidate my academic sources into a conceptual structure.
+Using ONLY the sources you selected and kept after STEP 6, and ensuring that every idea remains strictly aligned with the Research Question, perform ALL tasks below.
+
+Research Question:
+[INSERT RQ]
+
+Selected Extraction Tables (Step 6):
+[INSERT]
+
+---------------------------------------------------------
+TASK 1 — Identify the Main Topic (Conceptual Umbrella)
+---------------------------------------------------------
+Extract ONE high-level conceptual theme that:
+• synthesises insights from the selected sources  
+• reflects the core phenomenon, mechanism, or relationship investigated  
+• fits entirely within the scope of the Research Question  
+• is not phrased as a question, but as a concise conceptual label  
+• is grounded in evidence (not speculative or invented)  
+
+Output (A):  
+Main Topic → one sentence only  
+
+---------------------------------------------------------
+TASK 2 — Extract 3–8 Subtopics (Thematic Clusters)
+---------------------------------------------------------
+Identify 3–8 subtopics that:
+• group related mechanisms, variables, processes, or themes  
+• directly contribute to answering the Research Question  
+• reflect patterns appearing across multiple sources  
+• do not exceed the scope of the RQ  
+• do not introduce unsupported or irrelevant ideas  
+
+For EACH subtopic provide:
+• Description (2–3 sentences)  
+• 2–3 Key Details grounded in evidence  
+• Explicit link to the Research Question  
+
+Output (B):  
+Subtopics Table  
+| Subtopic | Description | Key Details | Link to RQ |
+
+---------------------------------------------------------
+TASK 3 — Produce a Hierarchical Outline (RQ-Aligned)
+---------------------------------------------------------
+Create a conceptual outline structured as follows:
+
+Main Topic  
+   – Subtopic 1  
+        • key detail 1  
+        • key detail 2  
+        • link to RQ  
+   – Subtopic 2  
+        • key detail 1  
+        • key detail 2  
+        • link to RQ  
+   – Subtopic 3  
+        • key detail 1  
+        • key detail 2  
+        • link to RQ  
+   … (add more if relevant)
+
+This outline will later be used to build:
+• the Scientific Explanation  
+• all multimodal outputs  
+• the Oral Presentation  
+
+---------------------------------------------------------
+TASK 4 — Justify Alignment With the Research Question
+---------------------------------------------------------
+Write a 4–6 sentence analytic justification explaining:
+• why the Main Topic is the correct conceptual umbrella  
+• how each subtopic contributes directly to answering the RQ  
+• why these subtopics are both sufficient and necessary  
+• how you avoided irrelevant or unsupported ideas  
+
+Output (D):  
+Alignment Justification → 4–6 sentences  
+
+---------------------------------------------------------
+FINAL OUTPUT FORMAT (required)
+---------------------------------------------------------
+A. Main Topic  
+[1 sentence]
+
+B. Subtopics Table  
+| Subtopic | Description | Key Details | Link to RQ |
+
+C. Hierarchical Outline  
+(as shown above)
+
+D. Alignment Justification  
+[4–6 sentences]
+    </textarea>
+  </div>
+</details>
+
+</section>
+
+
+<!-- STEP 7 -->
+<section id="step7">
+  <h3>STEP 7 — Mind Map</h2>
+  <p>Create a PlantUML mind map based on topics, subtopics, mechanisms, and relationships.</p>
+
+  <!-- PROMPT — Convert Hierarchical Outline into a PlantUML Mind Map -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Convert Hierarchical Outline into a PlantUML Mind Map</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+Convert the hierarchical outline below (generated in STEP 6) into a valid PlantUML mind map.
+
+Hierarchical Outline:
+[INSERT OUTLINE HERE]
+
+---------------------------------------------------------
+Instructions
+---------------------------------------------------------
+Follow ALL rules below:
+
+1. Use PlantUML mind map syntax exactly as follows:
+
+@startmindmap
+* Main Topic
+** Subtopic
+*** Detail
+@endmindmap
+
+2. The Main Topic must appear as the root node (*).  
+3. Each Subtopic must be placed as a second-level node (**).  
+4. Each key detail must appear as a third-level node (***).  
+5. Do NOT introduce any new content.  
+6. Use ONLY the information contained in the hierarchical outline from STEP 6.  
+7. Keep wording short, clear, and academically precise.  
+8. Ensure output is clean, valid, and ready for use in:
+   • PlantUML editor  
+   • draw.io  
+   • Mermaid Live Editor  
+   • any UML tool supporting mind maps  
+
+---------------------------------------------------------
+Required Output Format
+---------------------------------------------------------
+
+@startmindmap
+* [Main Topic]
+** [Subtopic 1]
+*** [Detail 1]
+*** [Detail 2]
+** [Subtopic 2]
+*** [Detail 1]
+*** [Detail 2]
+** [Subtopic 3]
+*** [Detail 1]
+*** [Detail 2]
+@endmindmap
+    </textarea>
+  </div>
+</details>
+
+</section>
+
+
+<!-- STEP 8A -->
+<section id="step8a">
+  <h3>STEP 8A — Glossary Terms</h2>
+  <p>Extract key terms and generate definitions.</p>
+
+  <!-- PROMPT — Terminology Extraction -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Terminology Extraction</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+Create a glossary of essential terms based ONLY on the materials produced in Stage 1.
+
+Paste your materials below:
+
+Research Question:
+[INSERT RQ]
+
+Extraction Table (STEP 4):
+[INSERT EXTRACTION TABLES]
+
+Topic + Subtopic Structure (from STEP 6):
+[INSERT OUTLINE]
+
+---------------------------------------------------------
+TASK 1 — Extract Specialised Terms
+---------------------------------------------------------
+Identify and list ONLY terms that meet ALL of the following criteria:
+
+✔ Required Criteria  
+A term must:
+• appear explicitly in the abstracts, extraction tables, or conceptual outline  
+• belong to the academic discipline (linguistics, biology, education, psychology, sustainability, computing, etc.)  
+• represent a key concept, mechanism, variable, process, theoretical model, or method  
+• be useful for understanding or answering the Research Question  
+
+❌ Excluded — Do NOT include:
+• everyday or general vocabulary  
+• invented or AI-generated terminology  
+• vague phrases or full sentences  
+• terms unrelated to the RQ or conceptual structure  
+
+---------------------------------------------------------
+TASK 2 — Write Clear, Accessible Definitions
+---------------------------------------------------------
+For each specialised term, write a precise 1–2 sentence definition that is:
+• accurate  
+• student-friendly  
+• academically valid  
+• free of circular definitions  
+• based ONLY on information present in the corpus  
+
+(No new theories, no invented mechanisms.)
+
+---------------------------------------------------------
+TASK 3 — Add an Optional Abbreviation
+---------------------------------------------------------
+Include an abbreviation ONLY IF:
+• it appears in your selected sources, OR  
+• it is universally recognised in the field (e.g., L1, EEG, AI, NLP, DNA)  
+
+If none exists, leave the column blank.
+
+---------------------------------------------------------
+TASK 4 — Produce the Final Glossary Table
+---------------------------------------------------------
+Your final output must be a clean, alphabetical glossary table with the structure:
+
+A. Glossary Table (Alphabetical)  
+| Term | Definition | Abbreviation (optional) |  
+|------|------------|--------------------------|  
+| …    | …          | …                        |  
+
+B. Total Number of Terms Extracted  
+(e.g., “Total: 18 specialised terms extracted.”)
+    </textarea>
+  </div>
+</details>
+
+</section>
+
+
+<!-- STEP 8B -->
+<section id="step8b">
+  <h3>STEP 8B — Glossary App</h3>
+  <p>Use the glossary to feed a glossary app (e.g., in React) if desired.</p>
+
+  <!-- PROMPT — Build a Web Glossary App -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Build a Web Glossary App (React + Tailwind)</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+Create a responsive web glossary application using React and Tailwind CSS.
+The glossary must contain only specialised academic or scientific terminology directly related to the topic provided by the user.
+
+❗ Important constraints:
+- No general vocabulary  
+- No invented terms  
+- No generic school-level concepts  
+- All terms must come from the STEP 9 glossary table  
+
+---------------------------------------------------------
+📌 1. Glossary Content Requirements
+---------------------------------------------------------
+For each specialised term, include:
+- Term (title)  
+- Optional abbreviation / acronym  
+- Clear, simplified definition (1–2 sentences; accessible but academically correct)  
+- Category badge (colour-coded)  
+- Category description (1 sentence)  
+
+✔ Categories  
+Categories must be generated ONLY from the conceptual structure of the academic field, using natural disciplinary divisions such as:
+
+Examples by domain:  
+• Linguistics: Morphology · Syntax · Semantics · Phonetics · Pragmatics · Discourse  
+• Biology: Cell Processes · Genetics · Ecology · Physiology · Evolution  
+• Chemistry: Molecular Structure · Reactions · Thermodynamics · Organic Mechanisms  
+• Education Sciences: Learning Theories · Cognition · Assessment · Pedagogy · Motivation  
+• Computer Science: Algorithms · Data Structures · Machine Learning · Protocols · Networks  
+
+Do NOT invent artificial categories.  
+Do NOT merge unrelated domains.  
+
+✔ Category Colour Coding  
+Use consistent Tailwind colours, for example:
+- Blue — Core Concepts  
+- Green — Processes  
+- Purple — Mechanisms  
+- Red — Risks / Failures / Errors  
+- Yellow — Metrics / Variables  
+
+(You may choose colours that better suit the discipline.)
+
+---------------------------------------------------------
+📌 2. User Interface Requirements
+---------------------------------------------------------
+The app must include the following UI components:
+
+Top Bar
+- Search bar (real-time filtering)  
+- Term counter (e.g., “32 terms”)  
+
+Glossary Cards
+Each card must display:
+- Term  
+- Category badge  
+- Definition  
+- Optional abbreviation / translation  
+
+Dark/Light Mode Toggle
+- Light mode: white background, black text  
+- Dark mode: charcoal background, light text  
+- Smooth transitions  
+
+Responsive Design
+- Mobile: stacked cards  
+- Tablet/Desktop: grid layout  
+- Accessible spacing and typography  
+
+---------------------------------------------------------
+📌 3. Technical Requirements
+---------------------------------------------------------
+Your code must:
+- use React functional components  
+- use Tailwind CSS (standard classes only)  
+- implement real-time search  
+- use useState and useEffect where appropriate  
+- follow a clean file structure, for example:
+
+/src  
+  GlossaryApp.jsx  
+  GlossaryCard.jsx  
+  SearchBar.jsx  
+  ThemeToggle.jsx  
+  data.js   ← contains all terms, definitions, categories  
+  index.css  
+  index.jsx  
+
+---------------------------------------------------------
+📌 4. Data Required From the User
+---------------------------------------------------------
+Before generating the full app, ask the user to paste their list of specialised terms in alphabetical order in the following format:
+
+Term | Definition | (optional) Abbreviation  
+
+Example:
+
+Afferent Neuron | A sensory neuron that carries signals toward the CNS.  
+Code-Switching | Alternating between two languages within a single discourse event.  
+PCR Amplification | A method for creating multiple copies of a DNA segment. | PCR  
+
+---------------------------------------------------------
+Final Output (Required)
+---------------------------------------------------------
+When generating the final answer, produce:
+- Full React + Tailwind CSS code  
+- File structure and instructions  
+- Deployment instructions for Bolt.new  
+- A ready-to-copy data.js template (autofilled with the user’s terminology list)
+    </textarea>
+  </div>
+</details>
+</section>
+
+    <hr>
+
+    <!-- ================= STAGE 2 ================= -->
+
+    <section id="stage2-purpose">
+      <h1 class="subtitle-gold">Stage 2 — Explain &amp; Create</h1>
+      <h3>🎯 Purpose of Stage 2</h3>
+      <p>Synthesise research into a Scientific Explanation, produce multimodal outputs, and prepare a clear oral
+        presentation using AI ethically as support.</p>
+    </section>
+
+    <section id="stage2-activities">
+      <h3>Activities</h3>
+      <ol>
+        <li>Write a Scientific Explanation (Claim–Evidence–Reasoning)</li>
+        <li>Choose multimodal outputs</li>
+        <li>Create and refine products</li>
+        <li>Prepare a short scientific oral presentation</li>
+        <li>Validate all outputs as a group</li>
+      </ol>
+    </section>
+
+    <!-- STEP 9 -->
+    <section id="step9">
+      <h3>STEP 9 — Write the Scientific Explanation</h3>
+      <p>Transform Stage 1 evidence into a structured claim–evidence–reasoning explanation, including limitations and
+        implications.</p>
+
+     
+      <!-- PROMPT — Scientific Explanation Generator -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Scientific Explanation Generator</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+Using ONLY the materials produced in Stage 1:
+– Research Question (Step 1)
+– Epistemological Analysis (Step 1)
+– Extraction Tables (Step 5)
+– Source Relevance Classification (Step 6)
+– PlantUML Mind Map (Step 8)
+– Glossary (Step 9)
+
+Write a structured Scientific Explanation using the Claim–Evidence–Reasoning model.
+
+Include:
+1. Claim (answer to the Research Question)
+2. Evidence (2–4 strong pieces from the extraction tables)
+3. Reasoning (explain clearly how/why each piece of evidence supports the claim)
+4. Limitations (scope boundaries, gaps, uncertainties)
+5. Implications (theoretical, practical, or future research)
+
+Requirements:
+– No new ideas that do not appear in the selected sources.
+– All terminology must come from the glossary.
+– Evidence must be traceable to specific sources.
+– Reasoning must explicitly connect evidence → claim.
+– Keep the explanation concise, rigorous, and coherent.
+
+Produce 1–2 tightly written paragraphs.
+    </textarea>
+  </div>
+</details>
+
+    </section>
+
+    <section id="step10">
+ <section id="step10">
+  <h3>STEP 10 — Create Multimodal Outputs</h2>
+  <p><strong>Transform scientific knowledge into accessible multimodal formats.</strong></p>
+
+  <p>Your group must decide which and how many multimodal outputs to produce.</p>
+    <li>You may produce only <strong>one final multimodal output</strong>, OR</li>
+    <li>Each member may create one, and the group selects the best.</li>
+  </ul>
+  <p><strong>Group validation is mandatory</strong> for the final choice.</p>
+</section>
+
+
+</section>
+
+
+    <section id="step10a">
+      <h3>STEP 10A — Visual Output (Poster / Infographic / Graphic Abstract)</h2>
+      <p>Use AI to generate outline, icons, and HTML/CSS layout based on your scientific content.</p>
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Poster | Audience: Specialists</summary>
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    <textarea readonly>
+You are a science communication designer and a front-end developer.
+
+You will receive a MASTER PROMPT containing the validated Scientific Explanation 
+produced in STEP 10 (Claim–Evidence–Reasoning, Limitations, Implications).
+
+Your task is to transform this scientific explanation into a SCIENTIFIC POSTER 
+aimed at SPECIALISTS in the same or a closely related field.
+
+MASTER PROMPT:
+[Paste here the Scientific Explanation from STEP 10]
+
+---------------------------------------------------------
+STEP 1 — OUTLINE (Specialist Poster Structure)
+---------------------------------------------------------
+Using ONLY the information contained in the MASTER PROMPT:
+
+1. Propose a structured outline for a scientific poster with:
+   - 4 to 7 major sections 
+     (e.g., Background, Research Question, Methods, Mechanisms, Results, 
+     Interpretation, Limitations, Future Work)
+   - 1–2 key messages per section.
+   - A strong emphasis on mechanisms, variables, processes, causal pathways, 
+     or relationships.
+
+2. Use precise, domain-specific terminology.
+
+---------------------------------------------------------
+STEP 2 — ICONS & VISUALS (SVG-Ready)
+---------------------------------------------------------
+For EACH section:
+1. Suggest 1–3 icons or schematic visuals.
+2. Provide:
+   - short label
+   - one-sentence explanation
+   - SVG-style description (no code)
+
+---------------------------------------------------------
+STEP 3 — HTML/CSS POSTER LAYOUT
+---------------------------------------------------------
+Produce ONE HTML file (with embedded CSS) containing:
+- title area
+- author block
+- 4–7 section layout
+- placeholders for figures
+- professional palette (2–3 colours)
+- strong hierarchy
+- grid/flex layout
+- no external fonts, libraries or JS
+
+---------------------------------------------------------
+OUTPUT (ALL in one response)
+---------------------------------------------------------
+1) Poster outline  
+2) Icons & visual descriptions  
+3) HTML/CSS file  
+4) Design rationale  
+5) Figure placement guide
+    </textarea>
+  </div>
+</details>
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Poster | Audience: General Public</summary>
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    <textarea readonly>
+You are a science communication designer and a front-end developer.
+
+You will receive a MASTER PROMPT containing the validated Scientific Explanation 
+from STEP 10 (Claim–Evidence–Reasoning, Limitations, Implications).
+
+Your task is to create a SCIENTIFIC POSTER for a GENERAL PUBLIC audience 
+with no specialist background.
+
+MASTER PROMPT:
+[Paste scientific explanation here]
+
+---------------------------------------------------------
+STEP 1 – NARRATIVE OUTLINE
+---------------------------------------------------------
+Create 3–5 simple panels:
+- The Problem  
+- What We Did  
+- What We Found  
+- Why It Matters  
+- What’s Next  
+
+Use:
+- plain language  
+- simple examples  
+- metaphors for mechanisms
+
+---------------------------------------------------------
+STEP 2 – ICONS & VISUAL ELEMENTS
+---------------------------------------------------------
+For EACH panel:
+- 1–3 friendly icons  
+- everyday-language explanation  
+- simple SVG description
+
+---------------------------------------------------------
+STEP 3 – HTML/CSS POSTER (Public-Friendly)
+---------------------------------------------------------
+Produce ONE HTML file with:
+- catchy title  
+- 1–2 sentence intro  
+- 3–5 poster panels  
+- “Take-home message”  
+- warm palette (2–3 colours)  
+- large fonts, high contrast  
+- flex/grid  
+- no external libraries
+
+---------------------------------------------------------
+STEP 4 – ACCESSIBILITY CHECK
+---------------------------------------------------------
+Provide a checklist:
+- where ideas were simplified  
+- where metaphors help  
+- how visuals map concepts  
+- font & colour accessibility  
+
+---------------------------------------------------------
+OUTPUT
+---------------------------------------------------------
+1) Narrative outline  
+2) Icons & visuals  
+3) HTML/CSS  
+4) Accessibility notes
+    </textarea>
+  </div>
+</details>
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Infographic | Audience: Specialists</summary>
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    <textarea readonly>
+You are a science communication designer and a front-end developer.
+
+MASTER PROMPT:
+[Paste STEP 10 scientific explanation]
+
+---------------------------------------------------------
+STEP 1 — OUTLINE (Expert Infographic)
+---------------------------------------------------------
+Create 4–7 conceptual blocks:
+- Core Mechanism  
+- Variables  
+- Relationships  
+- Evidence Map  
+- Systems Flow  
+- Findings  
+- Limitations  
+
+Include:  
+1–2 expert-level insights per block.
+
+---------------------------------------------------------
+STEP 2 — TECHNICAL VISUALS (SVG-Ready)
+---------------------------------------------------------
+For EACH block:
+- 1–3 schematic icons  
+- technical label  
+- explanation of mechanism or variable  
+- SVG-style microdiagram
+
+---------------------------------------------------------
+STEP 3 — HTML/CSS INFOGRAPHIC (Single file)
+---------------------------------------------------------
+Include:
+- technical title  
+- 4–7 blocks in vertical or grid layout  
+- condensed specialist text  
+- placeholders for diagrams  
+- minimalist palette (2–3 colours max)  
+- flex/grid only  
+- no external fonts or libraries
+
+---------------------------------------------------------
+OUTPUT
+---------------------------------------------------------
+1) Infographic outline  
+2) Icons & visuals  
+3) HTML/CSS  
+4) Design rationale  
+5) Figure placement notes
+    </textarea>
+  </div>
+</details>
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Infographic | Audience: General Public</summary>
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    <textarea readonly>
+You are a science communication designer.
+
+MASTER PROMPT:
+[Paste STEP 10 scientific explanation]
+
+---------------------------------------------------------
+STEP 1 — NARRATIVE INFOGRAPHIC OUTLINE
+---------------------------------------------------------
+Create 3–5 panels:
+- The Problem  
+- What We Found  
+- How It Works  
+- Why It Matters  
+- What Comes Next  
+
+Use:
+- simple language  
+- analogies  
+- examples  
+
+---------------------------------------------------------
+STEP 2 — ICONS & SIMPLE VISUALS
+---------------------------------------------------------
+For EACH panel:
+- 1–3 simple icons  
+- friendly labels  
+- everyday explanations  
+- SVG-style shapes
+
+---------------------------------------------------------
+STEP 3 — HTML/CSS PUBLIC INFOGRAPHIC
+---------------------------------------------------------
+Include:
+- short title  
+- 1–2 sentence intro  
+- 3–5 panels  
+- warm colours  
+- large fonts  
+- high contrast  
+- no external libs
+
+---------------------------------------------------------
+STEP 4 — ACCESSIBILITY CHECK
+---------------------------------------------------------
+Checklist:
+- simplified ideas  
+- metaphors  
+- visual clarity  
+- accessibility design
+
+---------------------------------------------------------
+OUTPUT
+---------------------------------------------------------
+1) Outline  
+2) Visuals  
+3) HTML/CSS  
+4) Accessibility notes
+    </textarea>
+  </div>
+</details>
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Graphical Abstract | Audience: Specialists</summary>
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    <textarea readonly>
+You are a scientific visualisation specialist.
+
+MASTER PROMPT:
+[Paste STEP 10 scientific explanation]
+
+---------------------------------------------------------
+STEP 1 — CORE SCIENTIFIC MODEL
+---------------------------------------------------------
+Reduce content to:
+- 1 core mechanism  
+- 2–6 key variables  
+- 1–3 causal relationships  
+- 1-sentence technical claim
+
+---------------------------------------------------------
+STEP 2 — VISUAL SCHEMA (SVG-ready)
+---------------------------------------------------------
+Include:
+- 3–6 elements  
+- labels  
+- relationship arrows  
+- SVG-style descriptions  
+
+---------------------------------------------------------
+STEP 3 — HTML/CSS GRAPHICAL ABSTRACT
+---------------------------------------------------------
+Landscape layout:
+- title  
+- central diagram  
+- ≤ 70 words  
+- 2-colour palette  
+- no libraries  
+
+---------------------------------------------------------
+OUTPUT
+---------------------------------------------------------
+1) Core model  
+2) SVG schema  
+3) HTML/CSS  
+4) Notes
+    </textarea>
+  </div>
+</details>
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Graphical Abstract | Audience: General Public</summary>
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+    <textarea readonly>
+You are a science communicator specialising in simplifying complex visuals.
+
+MASTER PROMPT:
+[Paste STEP 10 scientific explanation]
+
+---------------------------------------------------------
+STEP 1 — SIMPLE CORE MESSAGE
+---------------------------------------------------------
+Reduce to:
+- 1 simple idea  
+- 2–4 essential elements  
+- 1–2 basic relationships  
+- everyday language
+
+---------------------------------------------------------
+STEP 2 — VISUAL ELEMENTS (Public-Friendly)
+---------------------------------------------------------
+For EACH element:
+- friendly icon  
+- short explanation  
+- SVG-style description  
+
+---------------------------------------------------------
+STEP 3 — HTML/CSS GRAPHICAL ABSTRACT (Public)
+---------------------------------------------------------
+Include:
+- short engaging title  
+- one central visual block  
+- 1–2 sentence explanation  
+- warm palette (2–3 colours)  
+- large fonts  
+- ≤ 90 words  
+
+---------------------------------------------------------
+OUTPUT
+---------------------------------------------------------
+1) Core message  
+2) Visual elements  
+3) HTML/CSS  
+4) Accessibility notes
+    </textarea>
+  </div>
+</details>
+
+
+    </section>
+
+    <section id="step10b">
+      <h3>STEP 10B — Podcast</h2>
+      <p>Use NotebookLM or similar tools to draft and refine a podcast script based on your validated corpus.</p>
+    </section>
+
+    <section id="step10c">
+      <section id="step10b">
+ 
+  <p><strong>Explain your findings orally in a structured, evidence-based audio format.</strong></p>
+
+  <p>This step transforms your validated scientific explanation into an audio script suitable for specialists or the general public.</p>
+
+  <h3>🔼 Upload the following documents to NotebookLM (required) :</h3>
+  <ul>
+    <li>Research Question</strong></li>
+    <li>Epistemological Analysis (Step 1)</strong></li>
+    <li>Extraction Tables (Step 5)</strong></li>
+    <li>Glossary (Step 9)</strong></li>
+    <li>Scientific Explanation (Step 10)</strong></li>
+    <li>Subtopic Structure (Step 7)</strong></li>
+  </ul>
+
+  <p>After uploading your files, choose one of the two podcast scripts below:</p>
+<!-- =============================== -->
+  <!-- VERSION 1 — SPECIALISTS         -->
+  <!-- =============================== -->
+  <details class="prompt-collapse">
+    <summary>🎙️💬 Prompt — Podcast Script (Audience: Specialists)</summary>
+
+    <div class="prompt-box">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+      <textarea readonly>
+You are an academic podcast scriptwriter and subject-matter expert.
+
+Using ONLY the materials provided in the NotebookLM corpus 
+(Claim–Evidence–Reasoning, Limitations, Implications from STEP 10), 
+write a precise, conceptually rigorous PODCAST SCRIPT intended for a SPECIALIST audience 
+in the same or a closely related field.
+
+---------------------------------------------------------
+STRUCTURE (Required)
+---------------------------------------------------------
+
+1. Opening (20–30 seconds)
+   - State the Research Question
+   - Identify the central phenomenon, variables, and mechanisms
+   - Situate the topic within its disciplinary context
+
+2. Core Explanation (3–4 minutes)
+   - Present the CLAIM answering the RQ
+   - Summarise the strongest EVIDENCE from the validated corpus
+   - Explain the MECHANISMS and RELATIONSHIPS 
+     (causal, correlational, developmental, structural, etc.)
+   - Use domain-specific terminology from the glossary
+   - Maintain conceptual precision and a high density of information
+
+3. Critical Perspective (45–60 seconds)
+   - Highlight the main LIMITATIONS (scope, gaps, uncertainties)
+   - Avoid introducing ideas not supported by the corpus
+
+4. Implications (45–60 seconds)
+   - Discuss theoretical, methodological, or practical implications
+   - Suggest directions for future research grounded in the sources
+
+5. Closing (20–30 seconds)
+   - Reaffirm the key message
+   - Connect back to the Research Question
+   - End with a concise insight for specialists
+
+---------------------------------------------------------
+STYLE
+---------------------------------------------------------
+- Expert-level, concise, formal, intellectually dense
+- No simplification
+- No metaphors unless standard in the field
+- All statements must be traceable to the corpus
+
+---------------------------------------------------------
+OUTPUT
+---------------------------------------------------------
+A complete podcast script (5–7 minutes), ready for audio recording.
+      </textarea>
+    </div>
+  </details>
+<!-- =============================== -->
+  <!-- VERSION 2 — GENERAL PUBLIC      -->
+  <!-- =============================== -->
+  <details class="prompt-collapse">
+    <summary>🎙️💬 Prompt — Podcast Script (Audience: General Public)</summary>
+
+    <div class="prompt-box">
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+      <textarea readonly>
+You are a science communicator and podcast scriptwriter.
+
+Using ONLY the materials provided in the NotebookLM corpus 
+(Claim–Evidence–Reasoning, Limitations, Implications from STEP 10), 
+write an accessible PODCAST SCRIPT explaining the study to a 
+GENERAL PUBLIC audience with no specialist background.
+
+---------------------------------------------------------
+STRUCTURE (Required)
+---------------------------------------------------------
+
+1. Opening (20–30 seconds)
+   - Introduce the topic with an everyday hook
+   - Present the Research Question in simple terms
+   - Briefly explain why the topic matters
+
+2. Story-Based Explanation (3–4 minutes)
+   - Summarise the CLAIM answering the question
+   - Present 2–3 pieces of key EVIDENCE in plain language
+   - Explain MECHANISMS and RELATIONSHIPS using everyday analogies
+   - Introduce technical terms only when necessary, with short explanations
+
+3. Real-World Relevance (45–60 seconds)
+   - Show how the findings affect people, society, or real-world situations
+   - Use examples or simple scenarios
+
+4. Limitations (30–45 seconds)
+   - Explain, in accessible language, what the study cannot answer yet
+
+5. Take-Home Message (20–30 seconds)
+   - Provide a concise, memorable summary of the main idea
+
+---------------------------------------------------------
+STYLE
+---------------------------------------------------------
+- Friendly, narrative, engaging
+- No jargon without explanation
+- Use clear metaphors and vivid examples
+- Fully faithful to validated scientific content
+
+---------------------------------------------------------
+OUTPUT
+---------------------------------------------------------
+A complete podcast script (5–7 minutes), ready for recording 
+and suitable for a general audience.
+      </textarea>
+    </div>
+  </details>
+
+    </section>
+     
+       <section id="step10c">
+      <h3>STEP 10C — Videocast</h2>
+
+  <p><strong>Combine visuals and narration to create a short scientific videocast.</strong></p>
+
+  <p>
+    This step transforms the scientific explanation into a short video that integrates 
+    narration, visual structure, and evidence-based diagrams.
+  </p>
+
+  <h3>What the Videocast Combines</h3>
+  <ul>
+    <li><strong>Narration</strong> — derived from the podcast script (STEP 10B)</li>
+    <li><strong>Visual structure</strong> — based on the conceptual structure, mechanisms, and relationships</li>
+    <li><strong>Evidence-based diagrams</strong> — drawn from the validated corpus of sources</li>
+  </ul>
+
+  <p>
+    NotebookLM will use the complete set of documents uploaded in STEP 10 to generate 
+    both the videocast script and the visual storyboard.
+  </p>
+<!-- PROMPT — Videocast Generator (Specialists) -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Videocast Generator | Audience: Specialists</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+You are a science communication designer and academic scriptwriter.
+Your task is to produce a VISUAL–AUDIO SCIENTIFIC EXPLANATION (videocast)
+for a SPECIALIST audience.
+
+Using ONLY the materials (Claim–Evidence–Reasoning, Limitations, Implications from STEP 10) 
+in the NotebookLM corpus, produce a complete videocast script + visual storyboard.
+
+---------------------------------------------------------
+STRUCTURE (Required)
+---------------------------------------------------------
+
+1. TITLE SLIDE (5–7 seconds)
+   - Clear, domain-specific title
+   - Subtitle identifying the Research Question
+   - One-sentence summary of the central mechanism or relationship
+
+2. INTRODUCTION (20–30 seconds)
+   - Situate the research problem in its disciplinary context
+   - Explicitly name the phenomenon, variables, and systems involved
+   - State the Research Question precisely
+
+3. CORE EXPLANATION (2–3 minutes)
+   - Present the CLAIM based on the Scientific Explanation (Step 10)
+   - Summarise the strongest EVIDENCE (2–4 key findings)
+   - Detail the MECHANISMS and RELATIONSHIPS 
+     (causal, structural, mediational, developmental)
+   - Use technical vocabulary from the glossary
+   - Maintain high conceptual precision
+
+4. FIGURES & VISUAL ANNOTATIONS (embedded throughout)
+   For each core idea, generate:
+   - A short description of what should appear on screen 
+     (e.g., causal arrows, variables, process flow, diagrams of interaction)
+   - Labels for the key constructs
+   - Short on-screen text (max. 10–12 words per element)
+   - Visual metaphors only if standard in the discipline
+
+5. LIMITATIONS (20–30 seconds)
+   - Present scope boundaries, methodological constraints, unresolved questions
+   - No speculation beyond the sources
+
+6. IMPLICATIONS (30–40 seconds)
+   - Theoretical or methodological contributions
+   - Contextual or applied relevance
+
+7. CLOSING SLIDE (5–10 seconds)
+   - One-sentence synthesis
+   - Visual cue for the central mechanism or model
+
+---------------------------------------------------------
+OUTPUT
+---------------------------------------------------------
+Produce:
+1. A complete NARRATION SCRIPT (3–7 minutes)
+2. A detailed VISUAL STORYBOARD with timecodes, describing:
+   - What appears on screen
+   - How visuals synchronise with narration
+   - Diagrams, annotations, labels, structural elements
+3. A list of recommended on-screen keywords (max. 12)
+
+STYLE:
+- Expert-level scientific tone
+- No simplification for general audiences
+- Tight, evidence-based narration
+- Precision in describing mechanisms and relationships
+    </textarea>
+  </div>
+</details>
+<!-- PROMPT — Videocast Generator (General Public) -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Videocast Generator | Audience: General Public</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+You are a science communicator and visual storyteller.
+Your task is to create an accessible and engaging VISUAL–AUDIO EXPLANATION
+for a GENERAL PUBLIC audience.
+
+Using ONLY the materials (Claim–Evidence–Reasoning, Limitations, Implications from STEP 10) 
+in the NotebookLM corpus, produce a complete videocast script + visual storyboard.
+
+---------------------------------------------------------
+STRUCTURE (Required)
+---------------------------------------------------------
+
+1. TITLE SLIDE (5–7 seconds)
+   - Short, catchy title
+   - Simple subtitle introducing the question in everyday language
+   - 1-sentence explanation of why the topic matters
+
+2. INTRODUCTION (20–30 seconds)
+   - Explain the problem through a relatable scenario or concrete example
+   - Present the Research Question in simple terms
+   - Introduce the main idea of the study
+
+3. STORY EXPLANATION (2–3 minutes)
+   - Present the CLAIM in clear language
+   - Select 2–3 essential pieces of EVIDENCE and paraphrase them accessibly
+   - Explain MECHANISMS and RELATIONSHIPS using simple metaphors
+     (e.g., “like a chain reaction”, “like a filter that…”, 
+      “like two systems talking to each other”)
+   - Introduce technical terms only with short explanations
+   - Maintain fidelity to the validated scientific content
+
+4. VISUAL ELEMENTS (embedded throughout)
+   For each idea:
+   - Describe what should appear on screen (diagrams, icons, simple animations)
+   - Use friendly shapes and intuitive arrows
+   - Keep on-screen text short (max. 8–10 words)
+   - Use colour to differentiate variables or processes
+
+5. LIMITATIONS (20–30 seconds)
+   - Explain what the study cannot answer yet
+   - Keep language simple and non-technical
+
+6. REAL-WORLD IMPLICATIONS (30–45 seconds)
+   - Explain how the findings relate to society, daily life, education, health, policy, etc.
+   - Show practical examples
+
+7. CLOSING SLIDE (5–10 seconds)
+   - Include a short, memorable take-home message
+   - Add one simple, recognisable visual element supporting the main idea
+
+---------------------------------------------------------
+OUTPUT
+---------------------------------------------------------
+Produce:
+1. A complete NARRATION SCRIPT (3–7 minutes)
+2. A VISUAL STORYBOARD with timecodes, including:
+   - On-screen elements
+   - Diagram or icon suggestions
+   - Colours, labels, metaphors
+3. A final TAKE-HOME MESSAGE (2–3 sentences)
+
+STYLE:
+- Friendly, narrative, accessible
+- No jargon without explanation
+- Use vivid examples and relatable metaphors
+- Stay fully aligned with validated evidence (no invented information)
+    </textarea>
+  </div>
+</details>
+
+
+</section>
+
+      <p>Create an interactive science game or quiz that encodes your mechanisms, variables, and relationships.</p>
+    </section>
+
+    <section id="step10d">
+      <h3>STEP 10D — Interactive Science Game</h2>
+
+
+  <p><strong>Transform your scientific explanation into a structured, multi-step interactive quiz-game.</strong></p>
+
+  <p>
+    This step turns your validated scientific explanation into a playable experience 
+    combining narrative, choices, feedback, and scoring.
+  </p>
+
+  <p>
+    The game design follows a complete interactive workflow, including:
+  </p>
+
+  <ul>
+    <li>Clarification questions</li>
+    <li>Game blueprint design</li>
+    <li>Playable version</li>
+    <li>Shareable version (e.g., for Gemini Canvas)</li>
+    <li>Teacher key with correct answers and explanations</li>
+  </ul>
+
+  <p><strong>The game integrates the following elements:</strong></p>
+
+  <ul>
+    <li>Scientific explanation</li>
+    <li>Variables, mechanisms, and relationships</li>
+    <li>Extraction tables</li>
+    <li>Glossary</li>
+    <li>Conceptual structure (topics & subtopics)</li>
+    <li>Selected PDFs (validated corpus only)</li>
+  </ul>
+
+<!-- PROMPT — Interactive Science Game (Specialists) -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Interactive Science Game | Audience: Specialists</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+You are a learning game designer and scientific communication expert.
+Your task is to create an INTERACTIVE SCIENCE QUIZ-GAME for SPECIALISTS, 
+based on the validated materials (Claim–Evidence–Reasoning, Limitations, Implications from STEP 10).
+
+This game must follow the full workflow below, and you MUST ask clarification questions between steps.
+
+============================================================
+STEP 1 — GAME PROFILE (Ask Clarification Questions)
+============================================================
+Ask me the following questions:
+1. What type of game should this be?  
+   (options: quiz, escape room, branching research story, simulation, glossary challenge, or hybrid)
+
+2. Who is the specialist audience?  
+   (e.g., linguists, biologists, educators, medical researchers…)
+
+3. What difficulty level?  
+   (advanced only, or multi-level specialist modes?)
+
+4. Paste the Scientific Explanation (from STEP 10).
+
+Wait for my answers before moving to Step 2.
+
+============================================================
+STEP 2 — GAME BLUEPRINT
+============================================================
+Using ONLY my scientific explanation, generate:
+
+– Narrative structure grounded in the Research Question  
+– Player role (e.g., analyst, researcher, peer reviewer)  
+– 3–5 advanced scientific puzzles or decision points  
+– Each puzzle must involve variables, mechanisms, and relationships  
+– Scoring system (precision, reasoning depth, mechanism identification)  
+– Progression logic  
+– Gamification features:
+    • badges  
+    • hints  
+    • challenge modes  
+    • expert-level feedback prompts  
+
+Then ask me: "Do you want to modify anything before I build the playable version?"
+
+============================================================
+STEP 3 — PLAYABLE VERSION (Text-Based Scientific Game)
+============================================================
+Produce a fully playable text-based game with:
+
+– Clear narrative and mission  
+– Choices for each puzzle (2–4 options)  
+– Consequences for each choice  
+– Hints (expert-level)  
+– Immediate analytical feedback referencing mechanisms and evidence  
+– A live score counter  
+– Final classification (e.g., "Mechanism Analyst", "Evidence Integrator", "Systems Modeler")  
+– A closing section linking gameplay to the Scientific Explanation and the Research Question
+
+============================================================
+STEP 4 — SHAREABLE VERSION
+============================================================
+Produce a version formatted for Gemini Canvas.
+
+============================================================
+STEP 5 — TEACHER VERSION
+============================================================
+Provide:
+– Correct answers  
+– Detailed scientific explanations  
+– Justification grounded in:
+     • variables  
+     • mechanisms  
+     • relationships  
+     • selected evidence  
+– Notes on how the game assesses understanding of the Research Question
+
+============================================================
+RULES
+============================================================
+– Use ONLY validated content from the corpus.  
+– Maintain domain-specific terminology (no simplification).  
+– Ensure scientific accuracy at all steps.  
+– Do NOT invent concepts not grounded in evidence.
+    </textarea>
+  </div>
+</details>
+<!-- PROMPT — Interactive Science Game (General Public) -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Interactive Science Game | Audience: General Public</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+You are a learning game designer and science communicator.
+Your task is to create an INTERACTIVE SCIENCE QUIZ-GAME for the GENERAL PUBLIC 
+using ONLY the validated scientific content from STEP 10.
+
+Follow ALL steps in order.
+Ask clarification questions between steps.
+Make the game accessible but scientifically accurate.
+
+============================================================
+STEP 1 — GAME PROFILE (Ask Clarification Questions)
+============================================================
+Ask me:
+1. Game type:
+   (quiz, mystery/escape game, branching story, glossary challenge…)
+
+2. Target audience segment:
+   (children, teens, adults with no science background)
+
+3. Difficulty level:
+   (elementary, intermediate, or multi-level)
+
+4. Paste the Scientific Explanation (from STEP 10).
+
+Wait for my answers.
+
+============================================================
+STEP 2 — GAME BLUEPRINT
+============================================================
+Using the scientific explanation and corpus, produce:
+
+– Simple narrative structure  
+– Player role (detective, explorer, problem-solver…)  
+– 3–5 challenges using simplified mechanisms & variables  
+– For each challenge:
+     • plain-language explanation  
+     • metaphor or simple analogy  
+– Scoring system  
+– Fun gamification features:
+     • badges  
+     • hints  
+     • power-ups  
+     • scenario branching  
+
+Ask me:
+"Do you want to modify anything before I build the playable version?"
+
+============================================================
+STEP 3 — PLAYABLE VERSION (Text-Based Public Game)
+============================================================
+Produce a fully playable, friendly text-based game with:
+
+– Narrative flow  
+– Accessible choices  
+– Immediate, simple feedback  
+– Hints designed for non-specialists  
+– Score tracking  
+– A positive, encouraging ending  
+– A public-friendly summary of the Scientific Explanation
+
+============================================================
+STEP 4 — SHAREABLE VERSION
+============================================================
+Provide:
+– A copy/paste version for LMS, Padlet, PDF  
+– Optional: Canvas/Gemini/NotebookLM version
+
+============================================================
+STEP 5 — TEACHER VERSION
+============================================================
+Include:
+– Correct answers  
+– Plain-language explanations  
+– Short scientific justification  
+– Suggestions for classroom use  
+
+============================================================
+RULES
+============================================================
+– Accessible language  
+– No jargon (or define it clearly)  
+– Fidelity to validated evidence only  
+– No invented scientific content
+    </textarea>
+  </div>
+</details>
+
+
+</section>
+
+    </section>
+
+    <section id="step10e">
+      <h3>STEP 10E — Oral Presentation</h2>
+      <p>Prepare a 3–5 minute oral presentation for either specialist or general public audiences.</p>
+
+     
+      <!-- PROMPT — Oral Presentation Generator | Specialist -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Oral Presentation Generator | Audience: specialist</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+You are an academic presentation coach and subject-matter expert.
+Using ONLY the validated scientific content from STEP 10, create a 3–5 minute ORAL PRESENTATION aimed at SPECIALISTS in the same or a closely related field.
+
+The presentation must include ALL of the following elements:
+
+1. HOOK  
+   - A concise, field-relevant opening that frames the importance of the topic.
+
+2. RESEARCH QUESTION  
+   - State the RQ precisely and formally.
+
+3. METHODS OVERVIEW  
+   - Briefly describe the methodological logic of the inquiry  
+     (corpus selection, analytical steps, conceptual structure, evidence extraction).
+
+4. KEY FINDINGS  
+   - Present the CLAIM clearly, using domain-specific terminology.
+
+5. STRONG EVIDENCE  
+   - Choose 2–4 validated pieces of evidence from the sources.
+   - Use precise scientific vocabulary from the glossary.
+
+6. MULTIMODAL OUTPUTS  
+   - Describe how the poster/infographic, podcast, videocast, and interactive game 
+     represent the mechanisms, variables, and relationships.
+
+7. LIMITATIONS  
+   - Identify constraints or boundaries based on the Scientific Explanation.
+
+8. IMPLICATIONS  
+   - Specify theoretical, methodological, or applied implications.
+
+9. FINAL TAKEAWAY  
+   - Deliver one strong closing insight tied directly to the RQ.
+
+STYLE REQUIREMENTS:
+- Concise, rigorous, evidence-based  
+- No simplification  
+- High conceptual density  
+- Fully aligned with the validated corpus  
+
+OUTPUT:
+A complete 3–5 minute oral presentation script ready to deliver to specialists.
+    </textarea>
+  </div>
+</details>
+
+
+   
+      <!-- PROMPT — Oral Presentation Generator | General Public -->
+<details class="prompt-collapse">
+  <summary>💬 Prompt — Oral Presentation Generator | Audience: general public</summary>
+
+  <div class="prompt-box">
+    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+
+    <textarea readonly>
+You are a science communication specialist and oral presentation coach.
+Using ONLY the validated materials from STEP 10, create a 3–5 minute ORAL PRESENTATION for a GENERAL PUBLIC audience with no specialist background.
+
+Your presentation must include the following elements:
+
+1. HOOK  
+   - A relatable, engaging story, question, or real-world example.
+
+2. RESEARCH QUESTION  
+   - Present the RQ in simple, everyday language.
+   - Explain briefly why it matters.
+
+3. METHODS OVERVIEW  
+   - Describe what you did in a clear and non-technical way  
+     (e.g., “We looked at several studies… we compared ideas… we mapped patterns…”).
+
+4. KEY FINDINGS  
+   - Present the CLAIM in accessible terms.
+
+5. STRONG EVIDENCE  
+   - Choose 2–3 pieces of evidence and paraphrase them for clarity.
+   - Use simple metaphors where appropriate.
+
+6. MULTIMODAL OUTPUTS  
+   - Explain how each output (poster, podcast, videocast, game) 
+     helps different people understand the findings.
+
+7. LIMITATIONS  
+   - Briefly mention what the research cannot answer yet, in everyday language.
+
+8. IMPLICATIONS  
+   - Describe why the findings matter for real life, society, education, policy, or practice.
+
+9. FINAL TAKEAWAY  
+   - One short, memorable idea summarising the whole presentation.
+
+STYLE REQUIREMENTS:
+- Simple, friendly, vivid  
+- Use metaphors and examples  
+- Avoid jargon (or explain it briefly)  
+- Stay completely faithful to the validated scientific content  
+
+OUTPUT:
+A complete 3–5 minute oral presentation script suitable for a general public audience.
+    </textarea>
+  </div>
+</details>
+
+    </section>
+
+    <hr>
+
+    <!-- ================= STAGE 3 ================= -->
+
+    <section id="stage3-purpose">
+      <h1 class="subtitle-gold">Stage 3 — Reflect &amp; Improve</h1>
+      <h3>🎯 Purpose of Stage 3</h3>
+      <p>Stage 3 closes the inquiry cycle by helping students evaluate the quality of their work, reflect on reasoning
+        and AI use, and identify ways to extend their research.</p>
+    </section>
+
+    <section id="stage3-activities">
+      <h2>Activities of Stage 3</h2>
+      <ol>
+        <li>Evaluate multimodal outputs using rubrics</li>
+        <li>Reflect on group collaboration and ethical AI use</li>
+        <li>Extend the inquiry with new research questions and future directions</li>
+      </ol>
+    </section>
+
+ <!-- ===================================
+     STEP 12 — Evaluate Multimodal Outputs
+==================================== -->
+<section id="step12">
+  <h3>STEP 12 — Evaluate Your Multimodal Outputs</h3>
+
+  <p><strong>(Scientific Quality • Multimodal Accuracy • Communication Effectiveness)</strong></p>
+
+  <p>
+    In Step 12, your group evaluates the multimodal outputs produced in Stage 2. 
+    You may use either the general evaluation rubric provided below
+    or the specific rubrics available in the 
+    <em>Assessment</em> section of the main menu (Poster / Infographic / Graphic Abstract: rubric 3; Podcast and Videocast: rubric 4; Interactive Science Game: rubric 5).
+  </p>
+ 
+
+  <!-- COLLAPSABLE RUBRIC DESCRIPTION -->
+  <details class="rubric-collapse">
+    <summary>
+      <span class="rubric-title">Multimodal_ouput(s)</span>
+      <span class="rubric-subtitle">: Five evaluation dimensions</span>
+    </summary>
+
+    <div class="rubric-body">
+      <h4>Evaluation Dimensions</h4>
+      <p>Each output is evaluated across five dimensions using the 1–4 scale (1 Beginning → 4 Excellent).</p>
+
+      <h5>1. Scientific Accuracy</h5>
+      <ul>
+        <li><strong>4 — Excellent:</strong> Fully accurate; no scientific errors.</li>
+        <li><strong>3 — Good:</strong> Mostly accurate; minor imprecisions.</li>
+        <li><strong>2 — Developing:</strong> Several inaccuracies or vague concepts.</li>
+        <li><strong>1 — Beginning:</strong> Major inaccuracies or misconceptions.</li>
+      </ul>
+
+      <h5>2. Multimodal Integration</h5>
+      <ul>
+        <li><strong>4 — Excellent:</strong> All modes reinforce meaning; strong synergy.</li>
+        <li><strong>3 — Good:</strong> Modes aligned with minor inconsistencies.</li>
+        <li><strong>2 — Developing:</strong> Modes partially decorative or unclear.</li>
+        <li><strong>1 — Beginning:</strong> Modes contradict or confuse meaning.</li>
+      </ul>
+
+      <h5>3. Communication Quality</h5>
+      <ul>
+        <li><strong>4 — Excellent:</strong> Clear, coherent, well-structured, concise.</li>
+        <li><strong>3 — Good:</strong> Mostly clear; minor issues.</li>
+        <li><strong>2 — Developing:</strong> Overloaded, unclear, or weakly structured.</li>
+        <li><strong>1 — Beginning:</strong> Confusing or poorly organised.</li>
+      </ul>
+
+      <h5>4. Audience Adaptation</h5>
+      <ul>
+        <li><strong>4 — Excellent:</strong> Perfectly adapted to audience.</li>
+        <li><strong>3 — Good:</strong> Mostly adapted.</li>
+        <li><strong>2 — Developing:</strong> Partially adapted.</li>
+        <li><strong>1 — Beginning:</strong> Not adapted.</li>
+      </ul>
+
+      <h5>5. Alignment with Research Question & Conceptual Structure</h5>
+      <ul>
+        <li><strong>4 — Excellent:</strong> Fully aligned with RQ and conceptual map.</li>
+        <li><strong>3 — Good:</strong> Mostly aligned; minor drift.</li>
+        <li><strong>2 — Developing:</strong> Partially aligned.</li>
+        <li><strong>1 — Beginning:</strong> Not aligned.</li>
+      </ul>
+
+      <h4>Optional Summary Evaluation Table</h4>
+      <table>
+        <tr>
+          <th>Criterion</th>
+          <th>Score (1–4)</th>
+          <th>Notes / Justification</th>
+          <th>Improvements</th>
+        </tr>
+        <tr><td>Scientific Accuracy</td><td></td><td></td><td></td></tr>
+        <tr><td>Multimodal Integration</td><td></td><td></td><td></td></tr>
+        <tr><td>Communication Quality</td><td></td><td></td><td></td></tr>
+        <tr><td>Audience Adaptation</td><td></td><td></td><td></td></tr>
+        <tr><td>Alignment with RQ & Concept</td><td></td><td></td><td></td></tr>
+      </table>
+
+      <p><strong>✔️ Students complete these tables collaboratively.<br>
+         ✔️ Groups must justify all scoring decisions.</strong></p>
+    </div>
+  </details>
+</section>
+
+<hr>
+
+    <!-- STEP 13 -->
+    <section id="step13">
+      <h3>STEP 13 — Extend the Inquiry (New Questions)</h3>
+      <p>Identify new research questions, evidence gaps, follow-up studies, and broader implications emerging from your
+        work.</p>
+
+      <h3>Guiding Questions</h3>
+      <ul>
+        <li>What new questions emerged from your findings?</li>
+        <li>What remains unexplained or uncertain?</li>
+        <li>Which mechanisms or interactions need further study?</li>
+        <li>What evidence gaps and contradictions exist in the literature?</li>
+        <li>What follow-up studies or methods would extend the inquiry?</li>
+        <li>What broader implications for practice, policy, theory, or education arise?</li>
+      </ul>
+
+      <h3>📝 Student Task</h3>
+      <p>Write a 5–10 sentence reflection including 2–4 new research questions, 1–2 evidence gaps, 1–2 follow-up
+        investigations, and main implications for future work (this reflection must be written by the student, not by AI).</p>
+    </section>
+
+<section class="rubric-section" id="rubrics">
+ <h2>Assessment Framework</h2>
+
+  <p>
+    The assessment system in this toolkit is built around eight rubrics that ensure clarity, fairness, and 
+    academic rigour across all stages of Inquiry-Based Learning. They evaluate scientific reasoning, research quality,
+    multimodal communication, collaboration, and ethical use of AI.
+  </p>
+
+  <p><strong>For students:</strong><br>
+    These rubrics clarify expectations, guide self- and peer-assessment, and support improvement at every stage.
+  </p>
+
+  <p><strong>For teachers:</strong><br>
+    They provide a consistent, transparent framework for evaluating work, monitoring progress, 
+    and ensuring scientific quality and academic integrity.
+  </p>
+
+  <p>
+    The following eight rubrics make up the complete assessment framework. Each of them can be opened individually to reveal full criteria and performance levels.
+  </p>
+  </section>
+  <p class="rubric-intro">
+    Each rubric contains:
+    <strong>clear criteria</strong>, 
+    <strong>4 performance levels</strong> (Excellent – Good – Developing – Beginning),
+    <strong>teacher notes</strong> for interpretation,
+    and a <strong>student-friendly version</strong> for self- and peer-assessment.
+  </p>
+
+
+</section>
+  <!-- ===================================
+       RUBRIC 1 — SCIENTIFIC EXPLANATION
+  ==================================== -->
+ <section id="rubric1"> 
+ <details class="rubric-collapse" id="rubric1">
+    <summary>
+      <span class="rubric-title">Rubric 1 — Scientific Explanation</span>
+      <span class="rubric-subtitle">
+        Evaluates the Claim–Evidence–Reasoning explanation produced in Stage 2.
+      </span>
+    </summary>
+
+    <div class="rubric-body">
+      
+      <p>
+        <em>Used to evaluate the Claim–Evidence–Reasoning explanation produced in Stage 2.</em>
+      </p>
+
+      <h4>Criteria (each scored 1–4)</h4>
+      <ul>
+        <li><strong>Claim Quality</strong> — clarity, specificity, and alignment with the research question.</li>
+        <li><strong>Use of Evidence (Relevance + Accuracy)</strong> — quality, accuracy, and integration of sources.</li>
+        <li><strong>Reasoning &amp; Integration</strong> — coherence and logic linking evidence to the claim.</li>
+        <li><strong>Discussion of Limitations</strong> — recognition of gaps, constraints, and boundaries.</li>
+        <li><strong>Implications</strong> — depth and relevance of implications for theory, practice, or future inquiry.</li>
+      </ul>
+
+      <!-- CRITERION 1 -->
+      <h4>Criterion 1 — Claim Quality</h4>
+      <p><strong>4 — Excellent</strong><br>
+        Claim is precise, specific, and fully aligned with the research question.<br>
+        Demonstrates deep conceptual understanding and clearly frames the direction of the explanation.
+      </p>
+      <p><strong>3 — Good</strong><br>
+        Claim is clear and relevant to the research question but lacks nuance or precision.
+      </p>
+      <p><strong>2 — Developing</strong><br>
+        Claim is vague, overly broad, or only partially relevant; conceptual clarity is limited.
+      </p>
+      <p><strong>1 — Beginning</strong><br>
+        Claim is missing, incorrect, or unrelated to the research question.
+      </p>
+
+      <!-- CRITERION 2 -->
+      <h4>Criterion 2 — Use of Evidence (Relevance + Accuracy)</h4>
+      <p><strong>4 — Excellent</strong><br>
+        Evidence is accurate, relevant, diverse, and well-chosen. Demonstrates strong engagement with selected
+        sources and integrates evidence smoothly and meaningfully.
+      </p>
+      <p><strong>3 — Good</strong><br>
+        Evidence is generally relevant and accurate. Integration is mostly clear, with minor gaps.
+      </p>
+      <p><strong>2 — Developing</strong><br>
+        Evidence is partially relevant or insufficient. Source engagement is weak or interpretation inaccurate.
+      </p>
+      <p><strong>1 — Beginning</strong><br>
+        Very little or no relevant evidence; evidence is misinterpreted or absent.
+      </p>
+
+      <!-- CRITERION 3 -->
+      <h4>Criterion 3 — Reasoning &amp; Integration</h4>
+      <p><strong>4 — Excellent</strong><br>
+        Reasoning clearly and logically connects evidence to the claim, showing in-depth understanding of mechanisms,
+        relationships, or processes. Smooth integration across subtopics.
+      </p>
+      <p><strong>3 — Good</strong><br>
+        Reasoning is mostly clear and logical but may lack depth or sophistication.
+      </p>
+      <p><strong>2 — Developing</strong><br>
+        Reasoning is partially unclear or inconsistent; connections between ideas are weak or underdeveloped.
+      </p>
+      <p><strong>1 — Beginning</strong><br>
+        Reasoning is absent or illogical; there is no meaningful link between evidence and claim.
+      </p>
+
+      <!-- CRITERION 4 -->
+      <h4>Criterion 4 — Discussion of Limitations</h4>
+      <p><strong>4 — Excellent</strong><br>
+        Identifies relevant conceptual, methodological, or evidential limitations and explains their impact on findings or interpretation.
+      </p>
+      <p><strong>3 — Good</strong><br>
+        Mentions limitations but with limited detail or explanation.
+      </p>
+      <p><strong>2 — Developing</strong><br>
+        Limitations are present but superficial, generic, or unclear.
+      </p>
+      <p><strong>1 — Beginning</strong><br>
+        No limitations mentioned, or limitations are incorrect.
+      </p>
+
+      <!-- CRITERION 5 -->
+      <h4>Criterion 5 — Implications</h4>
+      <p><strong>4 — Excellent</strong><br>
+        Implications are insightful, logically derived, and meaningful. Connects findings to theory, practice, or further inquiry.
+      </p>
+      <p><strong>3 — Good</strong><br>
+        Implications are clearly stated but not deeply developed.
+      </p>
+      <p><strong>2 — Developing</strong><br>
+        Implications are present but vague or poorly justified.
+      </p>
+      <p><strong>1 — Beginning</strong><br>
+        No implications, or implications are irrelevant or incorrect.
+      </p>
+
+      <h4>Rubric 1 — Summary Table (Teacher Use)</h4>
+      <table class="rubric-table">
+        <tr>
+          <th>Criterion</th>
+          <th>1 — Beginning</th>
+          <th>2 — Developing</th>
+          <th>3 — Good</th>
+          <th>4 — Excellent</th>
+        </tr>
+        <tr>
+          <td>Claim Quality</td>
+          <td>Missing / incorrect</td>
+          <td>Vague / broad</td>
+          <td>Clear &amp; relevant</td>
+          <td>Precise, insightful</td>
+        </tr>
+        <tr>
+          <td>Evidence</td>
+          <td>Weak / irrelevant</td>
+          <td>Partial / limited</td>
+          <td>Mostly relevant</td>
+          <td>Strong, well-integrated</td>
+        </tr>
+        <tr>
+          <td>Reasoning</td>
+          <td>Absent / illogical</td>
+          <td>Unclear</td>
+          <td>Mostly coherent</td>
+          <td>Deep, logical, integrated</td>
+        </tr>
+        <tr>
+          <td>Limitations</td>
+          <td>None / incorrect</td>
+          <td>Superficial</td>
+          <td>Present</td>
+          <td>Clear, relevant, meaningful</td>
+        </tr>
+        <tr>
+          <td>Implications</td>
+          <td>None / irrelevant</td>
+          <td>Vague</td>
+          <td>Clear</td>
+          <td>Insightful, strong</td>
+        </tr>
+      </table>
+    </div>
+  </details>
+
+  <!-- ===================================
+       RUBRIC 2 — EVIDENCE BASE & RESEARCH PROCESS
+       (structure ready, just paste your long text inside .rubric-body)
+  ==================================== -->
+ <section id="rubric2"> 
+  <details class="rubric-collapse" id="rubric2">
+  <summary>
+    <span class="rubric-title">Rubric 2 — Evidence Base &amp; Research Process</span>
+    <span class="rubric-subtitle">
+      Evaluates the quality, rigour, and coherence of the research process in Stage 1.
+    </span>
+  </summary>
+
+  <div class="rubric-body">
+    
+    <p><em>Used to evaluate the quality, rigor, and coherence of the student’s research process in Stage 1: Ask &amp; Research.</em></p>
+
+    <h4>Criteria (scored 1–4)</h4>
+    <ul>
+      <li>Epistemological Analysis</li>
+      <li>Search-Term Extraction &amp; Boolean Strings</li>
+      <li>Corpus Quality &amp; Relevance</li>
+      <li>Extraction Tables</li>
+      <li>Source Evaluation (Relevance + Justification)</li>
+      <li>Topic + Subtopic Structure</li>
+    </ul>
+
+    <!-- ========================================= -->
+    <!-- CRITERIA DETAILS -->
+    <!-- ========================================= -->
+
+    <h4>Criterion 1 — Epistemological Analysis</h4>
+    <p><strong>4 — Excellent:</strong> Phenomenon, variables, assumptions, and scope clearly identified; reformulated RQ highly precise and insightful.</p>
+    <p><strong>3 — Good:</strong> Most elements identified; minor conceptual gaps.</p>
+    <p><strong>2 — Developing:</strong> Several unclear or missing elements.</p>
+    <p><strong>1 — Beginning:</strong> No meaningful analysis or incorrect reformulation.</p>
+
+    <h4>Criterion 2 — Search-Term Extraction &amp; Boolean Strings</h4>
+    <p><strong>4 — Excellent:</strong> Complete mapping (core terms, synonyms, related concepts, broader/narrower terms) + advanced Boolean strings.</p>
+    <p><strong>3 — Good:</strong> Mostly complete; functional Boolean strings.</p>
+    <p><strong>2 — Developing:</strong> Incomplete keyword structure; weak strings.</p>
+    <p><strong>1 — Beginning:</strong> Minimal or incorrect terms; unusable strings.</p>
+
+    <h4>Criterion 3 — Corpus Quality &amp; Relevance</h4>
+    <p><strong>4 — Excellent:</strong> High-quality peer-reviewed sources, all relevant, diverse, and aligned with RQ.</p>
+    <p><strong>3 — Good:</strong> Mostly relevant and credible; minor gaps.</p>
+    <p><strong>2 — Developing:</strong> Mixed quality; relevance inconsistent.</p>
+    <p><strong>1 — Beginning:</strong> Mostly irrelevant or unreliable sources.</p>
+
+    <h4>Criterion 4 — Extraction Tables</h4>
+    <p><strong>4 — Excellent:</strong> Precise extraction of mechanisms, variables, evidence, and relevance; fully rigorous.</p>
+    <p><strong>3 — Good:</strong> Accurate but minor omissions.</p>
+    <p><strong>2 — Developing:</strong> Incomplete or partially inaccurate.</p>
+    <p><strong>1 — Beginning:</strong> Absent or incorrect extraction.</p>
+
+    <h4>Criterion 5 — Source Evaluation</h4>
+    <p><strong>4 — Excellent:</strong> Accurate classification + strong justification (Direct/Partial/Not Relevant).</p>
+    <p><strong>3 — Good:</strong> Mostly correct classifications; adequate justification.</p>
+    <p><strong>2 — Developing:</strong> Weak or generic justification.</p>
+    <p><strong>1 — Beginning:</strong> No justification or incorrect classifications.</p>
+
+    <h4>Criterion 6 — Topic &amp; Subtopic Structure</h4>
+    <p><strong>4 — Excellent:</strong> Clear hierarchy; integrated conceptual structure aligned with sources.</p>
+    <p><strong>3 — Good:</strong> Logical structure with minor conceptual gaps.</p>
+    <p><strong>2 — Developing:</strong> Superficial or inconsistent structure.</p>
+    <p><strong>1 — Beginning:</strong> No meaningful structure.</p>
+
+    <h4>Summary Table</h4>
+    <table class="rubric-table">
+      <tr><th>Criterion</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      <tr><td>Epistemological Analysis</td><td>Incorrect</td><td>Vague</td><td>Clear</td><td>Deep</td></tr>
+      <tr><td>Search Terms</td><td>Incorrect</td><td>Incomplete</td><td>Functional</td><td>Excellent</td></tr>
+      <tr><td>Corpus Quality</td><td>Weak</td><td>Mixed</td><td>Mostly relevant</td><td>High quality</td></tr>
+      <tr><td>Extraction Tables</td><td>Missing</td><td>Incomplete</td><td>Clear</td><td>Rigorous</td></tr>
+      <tr><td>Source Evaluation</td><td>Incorrect</td><td>Weak</td><td>Correct</td><td>Strong</td></tr>
+      <tr><td>Topics &amp; Subtopics</td><td>None</td><td>Weak</td><td>Coherent</td><td>Insightful</td></tr>
+    </table>
+
+  </div>
+</details>
+
+
+  <!-- ===================================
+       RUBRIC 3 — MULTIMODAL OUTPUT
+  ==================================== -->
+ <section id="rubric3">  
+  <details class="rubric-collapse" id="rubric3">
+  <summary>
+    <span class="rubric-title">Rubric 3 — Multimodal Output (Poster / Infographic / Graphic Abstract)</span>
+    <span class="rubric-subtitle">
+      Evaluates scientific, visual, and communicative quality of visual outputs.
+    </span>
+  </summary>
+
+  <div class="rubric-body">
+    
+    <p><em>Evaluates the scientific, visual, and communicative quality of visual multimodal outputs created in Stage 2.</em></p>
+
+    <h4>Criteria</h4>
+    <ul>
+      <li>Scientific Accuracy &amp; Conceptual Correctness</li>
+      <li>Visual Clarity &amp; Layout Quality</li>
+      <li>Conciseness &amp; Information Design</li>
+      <li>Audience Adaptation</li>
+      <li>Multimodal Integration (Text + Visuals)</li>
+    </ul>
+
+    <h4>Criterion 1 — Scientific Accuracy</h4>
+    <p><strong>4 — Excellent:</strong> Fully accurate mechanisms, variables, relationships; no errors.</p>
+    <p><strong>3 — Good:</strong> Mostly accurate with minor imprecisions.</p>
+    <p><strong>2 — Developing:</strong> Partial accuracy; unclear concepts.</p>
+    <p><strong>1 — Beginning:</strong> Major inaccuracies; misleading visuals.</p>
+
+    <h4>Criterion 2 — Visual Clarity &amp; Layout</h4>
+    <p><strong>4 — Excellent:</strong> Highly readable; strong hierarchy; accessible; professional.</p>
+    <p><strong>3 — Good:</strong> Generally clear; minor spacing issues.</p>
+    <p><strong>2 — Developing:</strong> Unbalanced layout; readability issues.</p>
+    <p><strong>1 — Beginning:</strong> Confusing layout; poor readability.</p>
+
+    <h4>Criterion 3 — Conciseness &amp; Information Design</h4>
+    <p><strong>4 — Excellent:</strong> Extremely clear; no overload; excellent summarisation.</p>
+    <p><strong>3 — Good:</strong> Mostly concise; minor overload.</p>
+    <p><strong>2 — Developing:</strong> Overloaded; weak prioritisation.</p>
+    <p><strong>1 — Beginning:</strong> Overwhelming text; unclear focus.</p>
+
+    <h4>Criterion 4 — Audience Adaptation</h4>
+    <p><strong>4 — Excellent:</strong> Perfect alignment with intended audience.</p>
+    <p><strong>3 — Good:</strong> Mostly adapted; minor mismatches.</p>
+    <p><strong>2 — Developing:</strong> Partial adaptation.</p>
+    <p><strong>1 — Beginning:</strong> No adaptation.</p>
+
+    <h4>Criterion 5 — Multimodal Integration</h4>
+    <p><strong>4 — Excellent:</strong> Visuals accurately reinforce meaning; strong text-visual synergy.</p>
+    <p><strong>3 — Good:</strong> Generally supportive visuals.</p>
+    <p><strong>2 — Developing:</strong> Decorative rather than meaningful.</p>
+    <p><strong>1 — Beginning:</strong> Irrelevant or misleading visuals.</p>
+
+    <h4>Summary Table</h4>
+    <table class="rubric-table">
+      <tr><th>Criterion</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      <tr><td>Scientific Accuracy</td><td>Inaccurate</td><td>Partial</td><td>Mostly accurate</td><td>Fully accurate</td></tr>
+      <tr><td>Visual Quality</td><td>Confusing</td><td>Weak</td><td>Clear</td><td>Professional</td></tr>
+      <tr><td>Conciseness</td><td>Overload</td><td>Some overload</td><td>Concise</td><td>Excellent clarity</td></tr>
+      <tr><td>Audience Adaptation</td><td>None</td><td>Partial</td><td>Good</td><td>Perfect</td></tr>
+      <tr><td>Integration</td><td>None</td><td>Weak</td><td>Good</td><td>Strong synergy</td></tr>
+    </table>
+  </div>
+</details>
+
+  <!-- ===================================
+       RUBRIC 4 — PODCAST / VIDEOCAST
+  ==================================== -->
+<section id="rubric4">   
+<details class="rubric-collapse" id="rubric4">
+  <summary>
+    <span class="rubric-title">Rubric 4 — Podcast / Videocast</span>
+    <span class="rubric-subtitle">Evaluates scientific audio and audio-visual communication.</span>
+  </summary>
+
+  <div class="rubric-body">
+    
+    <p><em>Used to evaluate scientific audio or audio-visual communication produced in Stage 2.</em></p>
+
+    <h4>Criteria</h4>
+    <ul>
+      <li>Scientific Accuracy &amp; Explanation Quality</li>
+      <li>Narrative Structure &amp; Script Quality</li>
+      <li>Audience Adaptation</li>
+      <li>Delivery (Voice, Rhythm, Presence)</li>
+      <li>Audio / Visual Integration (for videocast)</li>
+      <li>Multimodal Communication Quality</li>
+    </ul>
+
+    <h4>Criterion 1 — Scientific Accuracy &amp; Explanation Quality</h4>
+    <p><strong>4 — Excellent:</strong> Fully accurate concepts; mechanisms correct; aligned with evidence base; no misconceptions.</p>
+    <p><strong>3 — Good:</strong> Mostly accurate; minor simplifications.</p>
+    <p><strong>2 — Developing:</strong> Some inaccuracies; missing details.</p>
+    <p><strong>1 — Beginning:</strong> Frequent errors; unclear explanations.</p>
+
+    <h4>Criterion 2 — Narrative Structure &amp; Script Quality</h4>
+    <p><strong>4 — Excellent:</strong> Strong intro → body → conclusion; smooth transitions; coherent pacing.</p>
+    <p><strong>3 — Good:</strong> Clear structure with minor gaps.</p>
+    <p><strong>2 — Developing:</strong> Abrupt transitions; uneven pacing.</p>
+    <p><strong>1 — Beginning:</strong> No clear structure.</p>
+
+    <h4>Criterion 3 — Audience Adaptation</h4>
+    <p><strong>4 — Excellent:</strong> Perfect adaptation (tone, vocabulary, metaphors, examples).</p>
+    <p><strong>3 — Good:</strong> Mostly adapted; minor mismatches.</p>
+    <p><strong>2 — Developing:</strong> Audience partially considered.</p>
+    <p><strong>1 — Beginning:</strong> Inappropriate tone; unclear target audience.</p>
+
+    <h4>Criterion 4 — Delivery (Voice, Rhythm, Presence)</h4>
+    <p><strong>4 — Excellent:</strong> Clear, confident, engaging; strong pacing.</p>
+    <p><strong>3 — Good:</strong> Mostly clear; minor articulation issues.</p>
+    <p><strong>2 — Developing:</strong> Uneven or unclear delivery.</p>
+    <p><strong>1 — Beginning:</strong> Hard to understand.</p>
+
+    <h4>Criterion 5 — Audio / Visual Integration (Videocast only)</h4>
+    <p><strong>4 — Excellent:</strong> Visuals perfectly aligned with narration; increase comprehension significantly.</p>
+    <p><strong>3 — Good:</strong> Mostly aligned.</p>
+    <p><strong>2 — Developing:</strong> Occasionally distracting.</p>
+    <p><strong>1 — Beginning:</strong> Irrelevant or confusing visuals.</p>
+
+    <h4>Criterion 6 — Multimodal Communication Quality</h4>
+    <p><strong>4 — Excellent:</strong> Voice + visuals (if any) work seamlessly; strong conceptual coherence.</p>
+    <p><strong>3 — Good:</strong> Generally coherent.</p>
+    <p><strong>2 — Developing:</strong> Modes partially disconnected.</p>
+    <p><strong>1 — Beginning:</strong> No coherence between modes.</p>
+
+    <h4>Summary Table</h4>
+    <table class="rubric-table">
+      <tr><th>Criterion</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      <tr><td>Accuracy</td><td>Incorrect</td><td>Partial</td><td>Mostly accurate</td><td>Fully accurate</td></tr>
+      <tr><td>Structure</td><td>None</td><td>Weak</td><td>Clear</td><td>Excellent</td></tr>
+      <tr><td>Audience</td><td>None</td><td>Partial</td><td>Good</td><td>Perfect</td></tr>
+      <tr><td>Delivery</td><td>Poor</td><td>Uneven</td><td>Clear</td><td>Excellent</td></tr>
+      <tr><td>A/V Integration</td><td>None</td><td>Weak</td><td>Good</td><td>Seamless</td></tr>
+      <tr><td>Multimodality</td><td>None</td><td>Weak</td><td>Good</td><td>Strong synergy</td></tr>
+    </table>
+
+  </div>
+</details>
+
+
+  <!-- ===================================
+       RUBRIC 5 — INTERACTIVE SCIENCE GAME
+  ==================================== -->
+<section id="rubric5">    
+<details class="rubric-collapse" id="rubric5">
+  <summary>
+    <span class="rubric-title">Rubric 5 — Interactive Science Game</span>
+    <span class="rubric-subtitle">Evaluates accuracy, mechanics, educational value, UX, and creativity.</span>
+  </summary>
+
+  <div class="rubric-body">
+   
+    <p><em>Used to evaluate interactive science games created in Stage 2 (quiz, escape room, branching story, simulation, glossary challenge, etc.).</em></p>
+
+    <h4>Criteria</h4>
+    <ul>
+      <li>Scientific Accuracy &amp; Content Quality</li>
+      <li>Game Design &amp; Mechanics</li>
+      <li>Educational Value</li>
+      <li>User Experience</li>
+      <li>Audience Adaptation</li>
+      <li>Creativity &amp; Engagement</li>
+    </ul>
+
+    <h4>Criterion 1 — Scientific Accuracy</h4>
+    <p><strong>4 — Excellent:</strong> Fully accurate; tasks require meaningful conceptual engagement.</p>
+    <p><strong>3 — Good:</strong> Mostly accurate; minor omissions.</p>
+    <p><strong>2 — Developing:</strong> Some inaccuracies; unclear mechanisms.</p>
+    <p><strong>1 — Beginning:</strong> Major inaccuracies or irrelevant tasks.</p>
+
+    <h4>Criterion 2 — Game Design &amp; Mechanics</h4>
+    <p><strong>4 — Excellent:</strong> Clear rules; coherent progression; meaningful feedback; high playability.</p>
+    <p><strong>3 — Good:</strong> Mostly clear with minor inconsistencies.</p>
+    <p><strong>2 — Developing:</strong> Uneven progression; unclear mechanics.</p>
+    <p><strong>1 — Beginning:</strong> Chaotic structure; no meaningful feedback.</p>
+
+    <h4>Criterion 3 — Educational Value</h4>
+    <p><strong>4 — Excellent:</strong> Strong conceptual reinforcement; requires real thinking.</p>
+    <p><strong>3 — Good:</strong> Promotes learning; clear links to mechanisms.</p>
+    <p><strong>2 — Developing:</strong> Limited educational focus.</p>
+    <p><strong>1 — Beginning:</strong> No educational value.</p>
+
+    <h4>Criterion 4 — User Experience</h4>
+    <p><strong>4 — Excellent:</strong> Clear, intuitive, readable; smooth navigation.</p>
+    <p><strong>3 — Good:</strong> Mostly clear; minor issues.</p>
+    <p><strong>2 — Developing:</strong> Confusing or uneven.</p>
+    <p><strong>1 — Beginning:</strong> Not playable.</p>
+
+    <h4>Criterion 5 — Audience Adaptation</h4>
+    <p><strong>4 — Excellent:</strong> Perfect adaptation to chosen audience.</p>
+    <p><strong>3 — Good:</strong> Mostly appropriate.</p>
+    <p><strong>2 — Developing:</strong> Partial adaptation.</p>
+    <p><strong>1 — Beginning:</strong> Not adapted.</p>
+
+    <h4>Criterion 6 — Creativity &amp; Engagement</h4>
+    <p><strong>4 — Excellent:</strong> Highly engaging; strong narrative or puzzle design.</p>
+    <p><strong>3 — Good:</strong> Contains creative elements.</p>
+    <p><strong>2 — Developing:</strong> Limited creativity.</p>
+    <p><strong>1 — Beginning:</strong> Flat or incomplete.</p>
+
+    <h4>Summary Table</h4>
+    <table class="rubric-table">
+      <tr><th>Criterion</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      <tr><td>Scientific Accuracy</td><td>Incorrect</td><td>Partial</td><td>Mostly accurate</td><td>Fully accurate</td></tr>
+      <tr><td>Game Mechanics</td><td>Chaotic</td><td>Weak</td><td>Clear</td><td>Strong</td></tr>
+      <tr><td>Educational Value</td><td>None</td><td>Low</td><td>Good</td><td>High</td></tr>
+      <tr><td>User Experience</td><td>Poor</td><td>Confusing</td><td>Clear</td><td>Polished</td></tr>
+      <tr><td>Audience</td><td>None</td><td>Partial</td><td>Good</td><td>Perfect</td></tr>
+      <tr><td>Creativity</td><td>None</td><td>Limited</td><td>Good</td><td>Highly engaging</td></tr>
+    </table>
+  </div>
+</details>
+
+
+  <!-- ===================================
+       RUBRIC 6 — ORAL PRESENTATION
+  ==================================== -->
+  <section id="rubric6"> 
+  <details class="rubric-collapse" id="rubric6">
+  <summary>
+    <span class="rubric-title">Rubric 6 — Oral Presentation</span>
+    <span class="rubric-subtitle">Evaluates structure, clarity, delivery, multimodality, and impact.</span>
+  </summary>
+
+  <div class="rubric-body">
+  
+    <p><em>Used to evaluate the 3–5 minute scientific oral presentation delivered in Stage 2.</em></p>
+
+    <h4>Criteria</h4>
+    <ul>
+      <li>Structure &amp; Scientific Organisation</li>
+      <li>Clarity &amp; Scientific Communication</li>
+      <li>Delivery (Voice, Pacing, Presence)</li>
+      <li>Use of Multimodal Outputs</li>
+      <li>Audience Adaptation</li>
+      <li>Overall Coherence &amp; Impact</li>
+    </ul>
+
+    <h4>Criterion 1 — Structure &amp; Scientific Organisation</h4>
+    <p><strong>4 — Excellent:</strong> Perfect structure: hook → RQ → methods → findings → evidence → multimodality → limitations → implications → conclusion.</p>
+    <p><strong>3 — Good:</strong> Clear structure; minor issues.</p>
+    <p><strong>2 — Developing:</strong> Several missing or misplaced sections.</p>
+    <p><strong>1 — Beginning:</strong> No coherent structure.</p>
+
+    <h4>Criterion 2 — Clarity &amp; Scientific Communication</h4>
+    <p><strong>4 — Excellent:</strong> Clear, accurate, concise; excellent conceptual mastery.</p>
+    <p><strong>3 — Good:</strong> Mostly clear.</p>
+    <p><strong>2 — Developing:</strong> Unclear or overly complex.</p>
+    <p><strong>1 — Beginning:</strong> Incorrect or unintelligible.</p>
+
+    <h4>Criterion 3 — Delivery</h4>
+    <p><strong>4 — Excellent:</strong> Confident, engaging, clear pacing.</p>
+    <p><strong>3 — Good:</strong> Generally clear.</p>
+    <p><strong>2 — Developing:</strong> Hesitant or unclear.</p>
+    <p><strong>1 — Beginning:</strong> Very difficult to understand.</p>
+
+    <h4>Criterion 4 — Use of Multimodal Outputs</h4>
+    <p><strong>4 — Excellent:</strong> Outputs integrated seamlessly; reinforce meaning.</p>
+    <p><strong>3 — Good:</strong> Outputs included; minor gaps.</p>
+    <p><strong>2 — Developing:</strong> Outputs shown but not well integrated.</p>
+    <p><strong>1 — Beginning:</strong> Absent or irrelevant.</p>
+
+    <h4>Criterion 5 — Audience Adaptation</h4>
+    <p><strong>4 — Excellent:</strong> Perfect match to target audience.</p>
+    <p><strong>3 — Good:</strong> Mostly appropriate.</p>
+    <p><strong>2 — Developing:</strong> Partial adaptation.</p>
+    <p><strong>1 — Beginning:</strong> Not adapted.</p>
+
+    <h4>Criterion 6 — Overall Coherence &amp; Impact</h4>
+    <p><strong>4 — Excellent:</strong> Strong message; memorable conclusion.</p>
+    <p><strong>3 — Good:</strong> Coherent; message could be stronger.</p>
+    <p><strong>2 — Developing:</strong> Weak message or unclear takeaways.</p>
+    <p><strong>1 — Beginning:</strong> No clear significance.</p>
+
+    <h4>Summary Table</h4>
+    <table class="rubric-table">
+      <tr><th>Criterion</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      <tr><td>Structure</td><td>Chaotic</td><td>Weak</td><td>Clear</td><td>Excellent</td></tr>
+      <tr><td>Clarity</td><td>Unclear</td><td>Weak</td><td>Good</td><td>Very clear</td></tr>
+      <tr><td>Delivery</td><td>Poor</td><td>Uneven</td><td>Good</td><td>Excellent</td></tr>
+      <tr><td>Multimodality</td><td>Absent</td><td>Weak</td><td>Good</td><td>Excellent</td></tr>
+      <tr><td>Audience</td><td>None</td><td>Partial</td><td>Good</td><td>Perfect</td></tr>
+      <tr><td>Impact</td><td>None</td><td>Weak</td><td>Clear</td><td>Strong</td></tr>
+    </table>
+  </div>
+</details>
+
+
+  <!-- ===================================
+       RUBRIC 7 — GROUP COLLABORATION
+  ==================================== -->
+  <section id="rubric7"> 
+  <details class="rubric-collapse" id="rubric7">
+  <summary>
+    <span class="rubric-title">Rubric 7 — Group Collaboration</span>
+    <span class="rubric-subtitle">Evaluates collaboration from Stage 0 to Stage 3.</span>
+  </summary>
+
+  <div class="rubric-body">
+   
+    <p><em>Assesses collaboration, organisation, communication, problem-solving, and use of AI tools.</em></p>
+
+    <h4>Criteria</h4>
+    <ul>
+      <li>Task Distribution &amp; Responsibility</li>
+      <li>Communication &amp; Coordination</li>
+      <li>Engagement &amp; Contribution</li>
+      <li>Collective Decision-Making</li>
+      <li>Problem-Solving &amp; Conflict Resolution</li>
+      <li>Group Autonomy &amp; AI Use</li>
+    </ul>
+
+    <h4>Criterion 1 — Task Distribution</h4>
+    <p><strong>4 — Excellent:</strong> Fair, transparent; accountability clear.</p>
+    <p><strong>3 — Good:</strong> Mostly fair; minor imbalance.</p>
+    <p><strong>2 — Developing:</strong> Uneven distribution.</p>
+    <p><strong>1 — Beginning:</strong> No clear distribution.</p>
+
+    <h4>Criterion 2 — Communication</h4>
+    <p><strong>4 — Excellent:</strong> Regular, clear; tools used effectively.</p>
+    <p><strong>3 — Good:</strong> Mostly clear.</p>
+    <p><strong>2 — Developing:</strong> Irregular; misunderstandings common.</p>
+    <p><strong>1 — Beginning:</strong> Very poor communication.</p>
+
+    <h4>Criterion 3 — Engagement</h4>
+    <p><strong>4 — Excellent:</strong> All members contribute actively.</p>
+    <p><strong>3 — Good:</strong> Most contribute.</p>
+    <p><strong>2 — Developing:</strong> Some minimal contributions.</p>
+    <p><strong>1 — Beginning:</strong> One or two members do all the work.</p>
+
+    <h4>Criterion 4 — Collective Decision-Making</h4>
+    <p><strong>4 — Excellent:</strong> Logical, respectful, collaborative.</p>
+    <p><strong>3 — Good:</strong> Mostly collaborative.</p>
+    <p><strong>2 — Developing:</strong> Decisions made by only a few.</p>
+    <p><strong>1 — Beginning:</strong> No group process.</p>
+
+    <h4>Criterion 5 — Problem-Solving</h4>
+    <p><strong>4 — Excellent:</strong> Conflicts addressed early; constructive solutions.</p>
+    <p><strong>3 — Good:</strong> Minor conflicts resolved.</p>
+    <p><strong>2 — Developing:</strong> Conflicts avoided or unresolved.</p>
+    <p><strong>1 — Beginning:</strong> Conflicts paralyse the group.</p>
+
+    <h4>Criterion 6 — Use of AI</h4>
+    <p><strong>4 — Excellent:</strong> AI used to support—not replace—collaboration.</p>
+    <p><strong>3 — Good:</strong> Balanced AI use.</p>
+    <p><strong>2 — Developing:</strong> Overreliance on AI.</p>
+    <p><strong>1 — Beginning:</strong> AI replaces human work.</p>
+
+    <h4>Summary Table</h4>
+    <table class="rubric-table">
+      <tr><th>Criterion</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      <tr><td>Task Distribution</td><td>Unfair</td><td>Uneven</td><td>Mostly fair</td><td>Fully fair</td></tr>
+      <tr><td>Communication</td><td>Poor</td><td>Irregular</td><td>Good</td><td>Excellent</td></tr>
+      <tr><td>Engagement</td><td>Low</td><td>Uneven</td><td>Good</td><td>High</td></tr>
+      <tr><td>Decision-Making</td><td>None</td><td>Uneven</td><td>Good</td><td>Excellent</td></tr>
+      <tr><td>Problem-Solving</td><td>None</td><td>Weak</td><td>Adequate</td><td>Strong</td></tr>
+      <tr><td>AI Use</td><td>Misused</td><td>Overreliant</td><td>Balanced</td><td>Ideal</td></tr>
+    </table>
+
+  </div>
+</details>
+
+
+  <!-- ===================================
+       RUBRIC 8 — ETHICAL AI USE
+  ==================================== -->
+  <section id="rubric8"> 
+  <details class="rubric-collapse" id="rubric8">
+  <summary>
+ <span class="rubric-title">Rubric 8 — Ethical AI Use</span>
+    <span class="rubric-subtitle">Evaluates transparency, validation, integrity, and human reasoning.</span>
+  </summary>
+
+  <div class="rubric-body">
+    
+    <p><em>Evaluates responsible use of AI tools across all inquiry stages.</em></p>
+
+    <h4>Criteria</h4>
+    <ul>
+      <li>Transparency of AI Use</li>
+      <li>Respect for AI Boundaries</li>
+      <li>Validation of AI Output</li>
+      <li>Human Reasoning &amp; Intellectual Ownership</li>
+      <li>Prompt Quality &amp; Ethical Framing</li>
+      <li>Citation Integrity</li>
+    </ul>
+
+    <h4>Criterion 1 — Transparency</h4>
+    <p><strong>4 — Excellent:</strong> Full disclosure (tools, prompts, functions, stage); AI Use Appendix present.</p>
+    <p><strong>3 — Good:</strong> Mostly transparent.</p>
+    <p><strong>2 — Developing:</strong> Partial or unclear transparency.</p>
+    <p><strong>1 — Beginning:</strong> No transparency.</p>
+
+    <h4>Criterion 2 — Respect for Boundaries</h4>
+    <p><strong>4 — Excellent:</strong> AI never used for prohibited tasks.</p>
+    <p><strong>3 — Good:</strong> Minor overreliance.</p>
+    <p><strong>2 — Developing:</strong> Some violations.</p>
+    <p><strong>1 — Beginning:</strong> Major violations.</p>
+
+    <h4>Criterion 3 — Validation &amp; Verification</h4>
+    <p><strong>4 — Excellent:</strong> Validates all AI output; corrects errors; checks citations.</p>
+    <p><strong>3 — Good:</strong> Usually validates.</p>
+    <p><strong>2 — Developing:</strong> Limited validation.</p>
+    <p><strong>1 — Beginning:</strong> No validation.</p>
+
+    <h4>Criterion 4 — Human Reasoning</h4>
+    <p><strong>4 — Excellent:</strong> Human thinking clearly leads; AI supports only.</p>
+    <p><strong>3 — Good:</strong> Mostly human-led.</p>
+    <p><strong>2 — Developing:</strong> AI influences reasoning.</p>
+    <p><strong>1 — Beginning:</strong> AI replaces reasoning.</p>
+
+    <h4>Criterion 5 — Prompt Quality</h4>
+    <p><strong>4 — Excellent:</strong> Ethical, precise prompts; require human reasoning first.</p>
+    <p><strong>3 — Good:</strong> Mostly appropriate.</p>
+    <p><strong>2 — Developing:</strong> Vague or risky prompts.</p>
+    <p><strong>1 — Beginning:</strong> Prompts violate academic integrity.</p>
+
+    <h4>Criterion 6 — Citation Integrity</h4>
+    <p><strong>4 — Excellent:</strong> All citations valid; DOIs verified; no hallucinations.</p>
+    <p><strong>3 — Good:</strong> Mostly accurate.</p>
+    <p><strong>2 — Developing:</strong> Some incorrect citations.</p>
+    <p><strong>1 — Beginning:</strong> Fabricated citations.</p>
+
+    <h4>Summary Table</h4>
+    <table class="rubric-table">
+      <tr><th>Criterion</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      <tr><td>Transparency</td><td>None</td><td>Partial</td><td>Clear</td><td>Thorough</td></tr>
+      <tr><td>Boundaries</td><td>Violates</td><td>Some issues</td><td>Respects</td><td>Fully respects</td></tr>
+      <tr><td>Validation</td><td>None</td><td>Limited</td><td>Usually</td><td>Always</td></tr>
+      <tr><td>Human Reasoning</td><td>AI-led</td><td>Mixed</td><td>Mostly human</td><td>Fully human</td></tr>
+      <tr><td>Prompt Quality</td><td>Unethical</td><td>Weak</td><td>Appropriate</td><td>Excellent</td></tr>
+      <tr><td>Citation Integrity</td><td>Fabrications</td><td>Errors</td><td>Mostly correct</td><td>Fully accurate</td></tr>
+    </table>
+
+  </div>
+</details>
+
+  </main>
+</div>
+</body>
+</html>
+    
+  </body>
+  
+</html>
